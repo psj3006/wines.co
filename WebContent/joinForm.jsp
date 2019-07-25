@@ -74,6 +74,7 @@
 
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="회원가입" onclick="" />
+						<input class="login100-form-btn2" type="button" value="되돌아가기" onclick="history.go(-1)" />
 					</div>
 					
 
@@ -99,7 +100,6 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
 
 </body>
 </html>

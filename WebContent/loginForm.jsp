@@ -7,6 +7,7 @@
 	<title>Wines.co</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -33,12 +34,12 @@
 
 	function login_go(f) {
 		if (f.email.value == "") {
-			alert("이메일을 입력해주세요.");
+			swal("이메일을 입력해주세요.");
 			f.email.focus();
 			return;
 		} 
 		if (f.pw.value == "") {
-			alert("비밀번호를 입력해주세요.");
+			swal("비밀번호를 입력해주세요.");
 			f.pw.focus();
 			return;
 		}
@@ -121,7 +122,7 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
 
 </body>
 </html>
