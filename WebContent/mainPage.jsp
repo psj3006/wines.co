@@ -7,9 +7,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
-  <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet"> 
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+ 
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -96,8 +95,8 @@
       <div class="intro-section container" style="background-image: url('images/hero_1.jpg');">
         <div class="row justify-content-center text-center align-items-center">
           <div class="col-md-8">
-            <span class="sub-title">Royal Wine</span>
-            <h1>Grape Wine</h1>
+            <span class="sub-title">훌륭한 와인의 비결</span>
+            <h1>높은 품질의 원재료</h1>
           </div>
         </div>
       </div>
@@ -105,7 +104,7 @@
       <div class="intro-section container" style="background-image: url('images/img_3.jpg');">
         <div class="row justify-content-center text-center align-items-center">
           <div class="col-md-8">
-            <span class="sub-title">Welcome</span>
+            <span class="sub-title">Welcome !</span>
             <h1>Wines For Everyone</h1>
           </div>
         </div>
