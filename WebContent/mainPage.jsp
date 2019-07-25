@@ -76,7 +76,7 @@
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                	<%
-               		// 쿠키 확인해서 로그인이 안되있으면 로그인, 되있으면 로그아웃메뉴가 나오게함. 
+               		// 쿠키 확인해서 로그인이 안되있으면 로그인, 되있으면 로그아웃이 나오게할것. 
                	%>
                 <li><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
               </ul>                                                                                                                                                                                                                                                                                         
@@ -121,7 +121,8 @@
         <div class="row mb-5">
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">Our Products</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!</p>
+            <pre>We stock one of the finest selections of wines and spirits that Lancashire has to offer,
+             all meticulously hand selected by our knowledgeable staff.</pre>
             <p><a href="#">View All Products <span class="icon-long-arrow-right"></span></a></p>
           </div>
         </div>
