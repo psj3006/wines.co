@@ -8,24 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
- 
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
   <link rel="stylesheet" href="css/aos.css">
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
-
   <link rel="stylesheet" href="css/style.css">
 
 
@@ -74,6 +67,10 @@
                 <li class="active"><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <%
+                	// 쿠키 확인해서 로그인 시에는 마이페이지, 아니면 로그인창 이동
+                %>
+                <li><a href="" class="nav-link text-left">My page</a></li>
                	<%
                		// 쿠키 확인해서 로그인이 안되있으면 로그인, 되있으면 로그아웃이 나오게할것. 
                	%>
@@ -96,7 +93,7 @@
         <div class="row justify-content-center text-center align-items-center">
           <div class="col-md-8">
             <span class="sub-title">훌륭한 와인의 비결</span>
-            <h1>높은 품질의 원재료</h1>
+            <h1>고품질의 원재료</h1>
           </div>
         </div>
       </div>
@@ -156,13 +153,6 @@
 	            <span>&nbsp; | &nbsp;</span>FAX : 032-123-4568
 	            <span>&nbsp; | &nbsp;</span>E-Mail : wines@wines.co<br />
           
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-
-
 
             </div>
           </div>
@@ -172,10 +162,8 @@
     
 
   </div>
-  <!-- .site-wrap -->
 
 
-  <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

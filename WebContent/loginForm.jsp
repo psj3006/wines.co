@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Wines.co</title>
+	<title>Wines co.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -24,9 +24,9 @@
 <script>
 
 	function login_go(f) {
-		if (f.email.value == "") {
+		if (f.id.value == "") {
 			swal("이메일을 입력해주세요.");
-			f.email.focus();
+			f.id.focus();
 			return;
 		} 
 		if (f.pw.value == "") {
@@ -83,6 +83,10 @@
                 <li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <%
+                	// 쿠키 확인해서 로그인 시에는 마이페이지, 아니면 로그인창 이동
+                %>
+                <li><a href="" class="nav-link text-left">My page</a></li>
                	<%
                		// 쿠키 확인해서 로그인이 안되있으면 로그인, 되있으면 로그아웃이 나오게할것. 
                	%>
@@ -110,7 +114,7 @@
 						이메일
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" name="email" >
+						<input class="input100" type="text" name="id" >
 					</div>
 					
 					<span class="txt1 p-b-11">
@@ -149,23 +153,34 @@
 		</div>
 	</div>
 	
+	<div class="footer">
+      <div class="container">
+        
+        
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+	            Wines co.
+	            <span>&nbsp; | &nbsp;</span>사업자등록번호 : 111-11-11111
+	            <span>&nbsp; | &nbsp;</span>주소 : 인천광역시 연수구 연수1동<br/>TEL : 032-123-4567
+	            <span>&nbsp; | &nbsp;</span>FAX : 032-123-4568
+	            <span>&nbsp; | &nbsp;</span>E-Mail : wines@wines.co<br />
+          
 
-	
-<!--===============================================================================================-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
 	<script src="js/login.js"></script>
 	
 

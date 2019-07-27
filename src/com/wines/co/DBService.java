@@ -11,7 +11,7 @@ public class DBService {
 	static {
 		try {
 			factory = new SqlSessionFactoryBuilder().build(
-					Resources.getResourceAsReader("com/green/mybatis/sqlMapConfig.xml"));
+					Resources.getResourceAsReader("com/wines/co/sqlMapConfig.xml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

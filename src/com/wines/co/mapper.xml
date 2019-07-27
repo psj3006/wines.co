@@ -4,5 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.wines.co.mapper">
-
+	<select id="select_all_members" resultType="com.wines.co.MVO">
+		SELECT * FROM member
+	</select>
+	<insert id="sign_up" parameterType="com.wines.co.MVO">
+		INSERT INTO member VALUES (#{id}, #{pw}, #{name}, #{addr}, #{tel}, #{admin})
+	</insert>
 </mapper>
