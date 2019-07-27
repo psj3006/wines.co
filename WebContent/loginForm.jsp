@@ -1,5 +1,9 @@
+<%@page import="com.wines.co.MVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.wines.co.DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,8 +25,13 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
+    
+<%
+	List<MVO> list = DAO.getAllMembers();
+%>
 <script>
-
+	// 최종 로그인 성공, 실패 확인을 위한 login_chk 변수
+	var login_chk = false;
 	function login_go(f) {
 		if (f.id.value == "") {
 			swal("이메일을 입력해주세요.");
@@ -34,11 +43,40 @@
 			f.pw.focus();
 			return;
 		}
-		if (f.remember_me.checked) {
-			
+		
+		// 이메일 존재여부 & 비밀번호가 맞는지 체크
+		<% for (MVO mvo:list) { %>
+			// 이메일이 존재하면
+		 	if ( "<%=mvo.getId()%>" == f.id.value) { 
+		 		// 비밀번호가 맞는지 체크
+		 		if ( "<%=mvo.getPw()%>" != f.pw.value) {
+		 			swal("비밀번호가 틀렸습니다.");
+		 			f.pw.value = "";
+		 			f.pw.focus();
+		 			return;
+		 		// 비밀번호가 맞으면 login_chk를 true로 설정
+		 		} else {
+		 			login_chk = true;
+		 		}
+		 	
+		 	}
+		<% } %> 
+		
+		// 위의 for 문을 지나왔는데 login_chk가 false라면 존재하지 않는 이메일이란 뜻
+		if (!login_chk) {
+			swal("존재하지 않는 이메일입니다.");
+			f.id.value = "";
+			f.id.focus();
+			return;
 		}
-		f.action = "login.jsp";
-		f.submit();
+		
+		swal("로그인성공!", "잠시 후 메인페이지로 돌아갑니다.")
+		// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
+		// setTimeout 을 걸어서 1초뒤에 login.jsp로 넘어가게했음
+		setTimeout(function(){
+			f.action = "login.jsp";
+			f.submit();
+		}, 1000);
 	}
 
 </script>
@@ -114,7 +152,7 @@
 						이메일
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" name="id" >
+						<input class="input100" type="text" name="id" maxlength=30>
 					</div>
 					
 					<span class="txt1 p-b-11">
@@ -124,19 +162,19 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pw" >
+						<input class="input100" type="password" name="pw" maxlength="20">
 					</div>
 					
 					<div class="flex-sb-m w-full p-b-48">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember_me">
-							<label class="label-checkbox100" for="ckb1">
+							<input class="input-checkbox100" id="ckb" type="checkbox" name="ckb" value="chk">
+							<label class="label-checkbox100" for="ckb">
 								로그인 유지
 							</label>
 						</div>
 
 						<div>
-							<a href="#" class="txt3">
+							<a href="find_account.jsp" class="txt3">
 								아이디/비밀번호 찾기
 							</a>
 						</div>

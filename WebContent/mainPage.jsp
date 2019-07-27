@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- 
+	로그인 여부를 세션과 쿠키로 확인해서 로그인이 되어있으면 로그인메뉴대신 로그아웃메뉴가 나오고
+ 	마이 페이지를 눌렀을 때, 이동을 다르게 설정.
+ 	
+ 	아래쪽 메뉴부분에 처리함.
+ --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +26,6 @@
   <link rel="stylesheet" href="css/aos.css">
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/style.css">
-
-
 
 </head>
 
@@ -52,15 +56,11 @@
                 class="icon-menu h3"></span></a>
         </div>
       </div>
-      
-
 
       
       <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
       <div class="container">
         <div class="d-flex align-items-center">
-          
           <div class="mx-auto">
             <nav class="site-navigation position-relative text-left" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
@@ -68,25 +68,56 @@
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <%
-                	// 쿠키 확인해서 로그인 시에는 마이페이지, 아니면 로그인창 이동
-                %>
-                <li><a href="" class="nav-link text-left">My page</a></li>
-               	<%
-               		// 쿠키 확인해서 로그인이 안되있으면 로그인, 되있으면 로그아웃이 나오게할것. 
-               	%>
-                <li><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
+                	// 세션확인으로 로그인 여부 체크
+                	boolean session_chk = false;
+                	if (session.getAttribute("id") != null) {
+                		session_chk = true;
+                	}
+                
+                	// 쿠키확인으로 로그인 여부 체크
+               		boolean cookie_chk = false;
+                	// 쿠키 갱신을 위한 변수
+                	String id = "";
+					Cookie[] cookies = request.getCookies();
+	            	
+					if (cookies != null && cookies.length > 0) {
+		        		for (int i=0; i<cookies.length; i++) { 
+		        			if (cookies[i].getName().equals("id")) { 
+		        				cookie_chk = true;
+		        				id = cookies[i].getValue();
+		        			}
+		        		}
+					}
+					// 세션없이 쿠키만 존재할때 (브라우저를 껐다가 나중에 다시 켰을때)
+					// 쿠키를 갱신하고 세션을 다시 만들어줌.
+					if (!session_chk && cookie_chk) {
+	        			Cookie cookie = new Cookie("id", id);
+	        			cookie.setPath("/");
+	        			cookie.setMaxAge(7*24*60*60);
+	        			response.addCookie(cookie);
+	        				
+	        			session.setAttribute("id", id);
+					}
+	        	%>
+	        	<%-- 로그인이 되어있다면 마이 페이지 클릭시 마이 페이지로 이동, 아니면 로그인창으로 이동--%>  
+				<%if (session_chk || cookie_chk) { %>
+	        		<li><a href="" class="nav-link text-left">My page</a></li>
+	        	<% } else { %>
+	        		<li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
+	        	<% } %>
+	        	<%-- 로그인이 되어있다면 로그아웃메뉴, 아니면 로그인메뉴 --%>
+	        	<%if (session_chk || cookie_chk) { %>
+	        		<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
+	        	<% } else { %>
+	        		<li><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
+	        	<% } %>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
-
           </div>
-         
         </div>
       </div>
-
     </div>
-    
     </div>
-
     
     <div class="owl-carousel hero-slide owl-style">
       <div class="intro-section container" style="background-image: url('images/hero_1.jpg');">

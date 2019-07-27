@@ -99,7 +99,7 @@
 		jstl로 해보려고 했으나 모르겠음
 		
 		<c:forEach var="list" items="${list }">
-			<c:if test="${list.id eq 'f.id.value'}">
+			<c:if test="${list.id eq f.id.value}">
 				swal("이미 가입된 이메일 !", "다른 이메일을 사용해주세요.", "error")
 				
 				return;
@@ -135,7 +135,7 @@
 			f.pw.focus();
 			return;
 		}
-		// 비밀번호 정규 표현식 ( 영문(대소문자무관)과 숫자 적어도 하나씩 포함, 영문 숫자 특수문자 !@#$%^&* 사용가능, 8~20글자)
+		// 비밀번호 정규 표현식 ( 영문(대소문자 무관)과 숫자 적어도 하나씩 포함, 영문 숫자 특수문자 !@#$%^&* 사용가능, 8~20글자)
 		var regExp2 = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,20}$/g;
 		if (f.pw.value.match(regExp2) == null) {
 		    swal("비밀번호 형식이 올바르지 않습니다.")
