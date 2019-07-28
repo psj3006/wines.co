@@ -89,7 +89,7 @@
 		        		}
 					}
 					// 세션없이 쿠키만 존재할때 (브라우저를 껐다가 나중에 다시 켰을때)
-					// 쿠키를 갱신하고 세션을 다시 만들어줌.
+					// 쿠키를 갱신하고(일주일유지) 세션을 다시 만들어줌.
 					if (!session_chk && cookie_chk) {
 	        			Cookie cookie = new Cookie("id", id);
 	        			cookie.setPath("/");
