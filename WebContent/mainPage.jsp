@@ -100,16 +100,18 @@
 					}
 	        	%>
 	        	<%-- 로그인이 되어있다면 마이 페이지 클릭시 마이 페이지로 이동, 아니면 로그인창으로 이동--%>  
-				<%if (session_chk || cookie_chk) { %>
-	        		<li><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
-	        	<% } else { %>
-	        		<li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
-	        	<% } %>
 	        	<%-- 로그인이 되어있다면 로그아웃메뉴, 아니면 로그인메뉴 --%>
-	        	<%if (session_chk || cookie_chk) { %>
-	        		<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
+				<%if (session_chk && session.getAttribute("id").equals("admin")) { %>
+					<li><a href="management.jsp" class="nav-link text-left">Management</a></li>
+		        	<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
 	        	<% } else { %>
-	        		<li><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
+	        		<%if (session_chk || cookie_chk) { %>
+		        		<li><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
+		        		<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
+		        	<% } else { %>
+		        		<li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
+		        		<li><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
+		        	<% } %>
 	        	<% } %>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>

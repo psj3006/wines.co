@@ -81,28 +81,21 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 					<span class="login100-form-title p-b-32">
-						장바구니
+						물품 등록
 					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="이동" onclick="" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
-						주문조회
+						물품 수정 및 제거
 					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="이동" onclick="" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
-						회원 정보수정
-					</span>
-					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="" />
-					</div>
-					<br /><hr /><br />
-					<span class="login100-form-title p-b-32">
-						회원 탈퇴
+						회원 관리
 					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="이동" onclick="" />
