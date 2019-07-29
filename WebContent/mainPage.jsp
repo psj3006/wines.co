@@ -101,7 +101,7 @@
 	        	%>
 	        	<%-- 로그인이 되어있다면 마이 페이지 클릭시 마이 페이지로 이동, 아니면 로그인창으로 이동--%>  
 				<%if (session_chk || cookie_chk) { %>
-	        		<li><a href="" class="nav-link text-left">My page</a></li>
+	        		<li><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
 	        	<% } else { %>
 	        		<li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
 	        	<% } %>
