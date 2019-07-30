@@ -10,7 +10,7 @@
 	<title>Wines co.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<jsp:include page="stylesheets.jsp"></jsp:include>
+	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
 <%
 	List<MVO> list = DAO.getAllMembers();
 %>
@@ -115,7 +115,7 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="frame/header.jsp"></jsp:include>
 				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
@@ -187,8 +187,8 @@
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp"></jsp:include>
-	<jsp:include page="jss.jsp"></jsp:include>
+	<jsp:include page="frame/footer.jsp"></jsp:include>
+	<jsp:include page="frame/jss.jsp"></jsp:include>
 
 </body>
 </html>

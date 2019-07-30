@@ -1,14 +1,17 @@
+<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.MVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	String chk = request.getParameter("ckb");
 	
+	// 세션 생성을 위해 mvo 생성
+	MVO mvo = DAO.getOneMember(id);
 	// 로그인했음을 확인하기 위한 세션 생성
-	session.setAttribute("id", id);
+	session.setAttribute("mvo", mvo);
 	
 	// 로그인 유지 체크시에 쿠키 생성
 	if (chk != null) {
@@ -21,4 +24,3 @@
 	response.sendRedirect("mainPage.jsp");
 %>
 
-<title>Wines co.</title>

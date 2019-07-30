@@ -19,11 +19,20 @@ public class DAO {
 		return getSqlSession().selectList("select_all_members");
 	}
 	
+	public static MVO getOneMember(String id) {
+		return getSqlSession().selectOne("select_one_member", id);
+	}
+	
 	public static int signUp(MVO mvo) {
 		int result = getSqlSession().insert("sign_up", mvo);
 		getSqlSession().commit();
 		return result;
 	}
 	
+	public static int updateMember(MVO mvo) {
+		int result = getSqlSession().update("update_member", mvo);
+		getSqlSession().commit();
+		return result;
+	}
 	
 }

@@ -11,7 +11,7 @@
 	<title>Wines co.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<jsp:include page="stylesheets.jsp"></jsp:include>
+	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
     
 <%
 	List<MVO> list = DAO.getAllMembers();
@@ -67,7 +67,7 @@
 		}
 		
 		swal("로그인성공!", "잠시 후 메인페이지로 돌아갑니다.", {
-			button: "확인"
+			  button: false,
 		});
 		// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
 		// setTimeout 을 걸어서 1초뒤에 login.jsp로 넘어가게했음
@@ -81,7 +81,7 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="frame/header.jsp"></jsp:include>
 				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
@@ -98,6 +98,7 @@
     </div>
     
     </div>
+	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -147,29 +148,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="footer">
-      <div class="container">
-        
-        
-        <div class="row">
-          <div class="col-12">
-            <div class="copyright">
-	            Wines co.
-	            <span>&nbsp; | &nbsp;</span>사업자등록번호 : 111-11-11111
-	            <span>&nbsp; | &nbsp;</span>주소 : 인천광역시 연수구 연수1동<br/>TEL : 032-123-4567
-	            <span>&nbsp; | &nbsp;</span>FAX : 032-123-4568
-	            <span>&nbsp; | &nbsp;</span>E-Mail : wines@wines.co<br />
-          
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     
-	<jsp:include page="footer.jsp"></jsp:include>
-	<jsp:include page="jss.jsp"></jsp:include>
+	<jsp:include page="frame/footer.jsp"></jsp:include>
+	<jsp:include page="frame/jss.jsp"></jsp:include>
 
 </body>
 </html>

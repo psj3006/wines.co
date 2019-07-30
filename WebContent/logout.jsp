@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<title>Wines co.</title>
-
-<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <% 
 	// 세션 초기화
 	session.invalidate();

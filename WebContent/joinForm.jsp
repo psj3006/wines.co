@@ -10,7 +10,7 @@
 	<title>Wines co.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<jsp:include page="stylesheets.jsp"></jsp:include>
+	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
     
     
 <style>
@@ -60,7 +60,7 @@
 		} 
 		
 		// 아이디 형식 확인을 위한 정규 표현식 (이메일)
-		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,6}$/i;
 			
 		if (f.id.value.match(regExp) == null) {
 			swal("아이디 형식이 올바르지 않습니다.")
@@ -84,8 +84,6 @@
 		<% } %> 
 	}
 		<%--   
-		jstl로 해보려고 했으나 모르겠음
-		
 		<c:forEach var="list" items="${list }">
 			<c:if test="${list.id eq f.id.value}">
 				swal("이미 가입된 아이디 !", "다른 아이디를 사용해주세요.", "error")
@@ -141,7 +139,7 @@
 				button: "확인"
 			});
 		    f.pw.value = "";
-		    f.pw.value.focus();
+		    f.pw.focus();
 		    return;
 		}
 		
@@ -185,7 +183,7 @@
 				button: "확인"
 			});
 		    f.tel.value = "";
-		    f.tel.value.focus();
+		    f.tel.focus();
 		    return;
 		}
 		<% for (MVO mvo:list) { %>
@@ -199,8 +197,8 @@
 		 	}
 		<% } %> 
 		
-		swal("회원가입 성공 !", "잠시 후 메인페이지로 돌아갑니다.", "success", {
-			button: "확인"
+		swal("회원가입 성공 !", "잠시 후 메인페이지로 돌아갑니다.",  {
+			  button: false,
 		});
 		// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
 		// setTimeout 을 걸어서 1초뒤에 join.jsp로 넘어가게했음
@@ -215,7 +213,7 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="frame/header.jsp"></jsp:include>
 				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
@@ -265,7 +263,7 @@
 						비밀번호 확인
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="password" name="pw2" maxlength="20">
+						<input class="input100" type="password" name="pw2" maxlength="20" placeholder="영문 숫자 필수, 8~20자 이내">
 						<span class="focus-input100"></span>
 					</div>
 					<span class="txt1 p-b-11">
@@ -293,7 +291,6 @@
 
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="회원가입" onclick="sign_up(this.form)" />
-						<input type="hidden" value="0" name="admin"/>
 						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="history.go(-1)" />
 					</div>
 					
@@ -303,8 +300,8 @@
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp"></jsp:include>
-	<jsp:include page="jss.jsp"></jsp:include>
+	<jsp:include page="frame/footer.jsp"></jsp:include>
+	<jsp:include page="frame/jss.jsp"></jsp:include>
 
 </body>
 </html>

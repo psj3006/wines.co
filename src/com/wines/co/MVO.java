@@ -2,7 +2,7 @@ package com.wines.co;
 
 public class MVO {
 
-	private String id, pw, name, addr, tel, admin;
+	private String id, pw, name, addr, tel;
 
 	public String getId() {
 		return id;
@@ -44,11 +44,4 @@ public class MVO {
 		this.tel = tel;
 	}
 
-	public String getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(String admin) {
-		this.admin = admin;
-	}
 }

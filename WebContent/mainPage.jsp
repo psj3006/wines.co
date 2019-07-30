@@ -1,3 +1,5 @@
+<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.MVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 
@@ -6,20 +8,23 @@
  	
  --%>
  <%
+ 	MVO mvo = null;
     // 세션확인으로 로그인 여부 체크
     boolean session_chk = false;
-    if (session.getAttribute("id") != null) {
+    if (session.getAttribute("mvo") != null) {
     	session_chk = true;
+    	mvo = (MVO)session.getAttribute("mvo");
     }
                 
     // 쿠키확인으로 로그인 여부 체크
     boolean cookie_chk = false;
-    // 쿠키 갱신을 위한 변수
+    // 쿠키 갱신, 세션생성을 위한 변수
     String id = "";
+    
 	Cookie[] cookies = request.getCookies();
-	            	
 	if (cookies != null && cookies.length > 0) {
 		for (int i=0; i<cookies.length; i++) { 
+			// id라는 이름의 쿠키가 존재하면
 		   if (cookies[i].getName().equals("id")) { 
 		   cookie_chk = true;
 		   id = cookies[i].getValue();
@@ -29,12 +34,15 @@
 	// 세션없이 쿠키만 존재할때 (브라우저를 껐다가 나중에 다시 켰을때)
 	// 쿠키를 갱신하고(일주일유지) 세션을 다시 만들어줌.
 	if (!session_chk && cookie_chk) {
+		// 쿠키갱신 (일주일)
 		Cookie cookie = new Cookie("id", id);
 	    cookie.setPath("/");
 	    cookie.setMaxAge(7*24*60*60);
 	    response.addCookie(cookie);
-	        				
-	    session.setAttribute("id", id);
+	    
+	    // 세션생성
+		mvo = DAO.getOneMember(id);
+	    session.setAttribute("mvo", mvo);
 		}
 %>
 <!DOCTYPE html>
@@ -44,26 +52,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <jsp:include page="stylesheets.jsp"></jsp:include>
+  <jsp:include page="frame/stylesheets.jsp"></jsp:include>
 
 </head>
 
 <body>
 
-    <jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="frame/header.jsp"></jsp:include>
     
                 <li class="active"><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
 	        	<%-- 관리자계정으로 로그인시에 마이 페이지대신 매니지먼트 페이지 --%>
-				<%if (session_chk && session.getAttribute("id").equals("admin")) { %>
+				<%if (session_chk && mvo.getId().equals("admin")) { %>
 					<li><a href="management.jsp" class="nav-link text-left">Management</a></li>
 		        	<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
 	        	<% } else { %>
 	        		<%-- 로그인이 되어있다면 마이 페이지 클릭시 마이 페이지로 이동, 아니면 로그인메뉴로 이동--%>  
 	        		<%-- 로그인이 되어있다면 로그아웃메뉴, 아니면 로그인메뉴 --%>
 	        		<%if (session_chk || cookie_chk) { %>
-		        		<li><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
+		        		<li><a href="mypage_chkpw.jsp" class="nav-link text-left">My page</a></li>
 		        		<li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
 		        	<% } else { %>
 		        		<li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
@@ -127,8 +135,8 @@
       </div>
     </div>
   			
-	<jsp:include page="footer.jsp"></jsp:include>
-	<jsp:include page="jss.jsp"></jsp:include>
+	<jsp:include page="frame/footer.jsp"></jsp:include>
+	<jsp:include page="frame/jss.jsp"></jsp:include>
 
 </body>
 
