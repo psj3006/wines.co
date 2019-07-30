@@ -11,20 +11,7 @@
 	<title>Wines co.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
+	<jsp:include page="stylesheets.jsp"></jsp:include>
     
 <%
 	List<MVO> list = DAO.getAllMembers();
@@ -93,47 +80,13 @@
 </script>
 </head>
 <body>
-<div></div>
-	<div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
 
-
-    
-    <div class="header-top">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-12 text-center">
-            <a href="mainPage.jsp" class="site-logo">
-              <img src="images/logo.png" alt="Image" class="img-fluid">
-            </a>
-          </div>
-          <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-        </div>
-      </div>
-      
-
-
-      
-      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
-      <div class="container">
-        <div class="d-flex align-items-center">
-          
-          <div class="mx-auto">
-            <nav class="site-navigation position-relative text-left" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
-                <li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+	<jsp:include page="header.jsp"></jsp:include>
+				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
-                <li><a href="" class="nav-link text-left">My page</a></li>
-                <li class="active"><a href="" class="nav-link text-left">Login</a></li>
+                <li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
+                <li class="active"><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
 
@@ -165,9 +118,6 @@
 						비밀번호
 					</span>
 					<div class="wrap-input100 validate-input m-b-12">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
 						<input class="input100" type="password" name="pw" maxlength="20">
 						<span class="focus-input100"></span>
 					</div>
@@ -218,16 +168,8 @@
       </div>
     </div>
     
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script src="js/login.js"></script>
-	
+	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="jss.jsp"></jsp:include>
 
 </body>
 </html>
