@@ -1,15 +1,15 @@
-<%@page import="com.wines.co.DAO"%>
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% 
+<%
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	String chk = request.getParameter("ckb");
 	
 	// 세션 생성을 위해 mvo 생성
-	MVO mvo = DAO.getOneMember(id);
+	MemberVO mvo = MemberDAO.getOneMember(id);
 	// 로그인했음을 확인하기 위한 세션 생성
 	session.setAttribute("mvo", mvo);
 	

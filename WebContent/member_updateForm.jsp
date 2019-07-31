@@ -1,9 +1,8 @@
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +12,14 @@
 	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
     
 
-<%
-	// 전화번호 중복확인을 위한 리스트
-	List<MVO> list = DAO.getAllMembers();
+	<%
+    	// 전화번호 중복확인을 위한 리스트
+        List<MemberVO> list = MemberDAO.getAllMembers();
 
-	// 
-	MVO mvo = (MVO)session.getAttribute("mvo");
-	String id = mvo.getId();
-	pageContext.setAttribute("mvo", mvo);
-%>
+        // 
+        MemberVO mvo = (MemberVO)session.getAttribute("mvo");
+        String id = mvo.getId();
+    %>
 
 <script>
 	
@@ -73,7 +71,7 @@
 				    f.tel.focus();
 				    return;
 				}
-				<% for (MVO chkTel:list) { %>
+				<%for (MemberVO chkTel:list) {%>
 				 	if ( "<%=chkTel.getTel()%>" == f.tel.value) { 
 				 		swal("이미 등록된 전화번호 !", "다른 전화번호를 사용해주세요.", "error", {
 							button: "확인"

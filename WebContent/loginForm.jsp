@@ -1,6 +1,6 @@
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,9 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
     
-<%
-	List<MVO> list = DAO.getAllMembers();
-%>
+	<%
+    	List<MemberVO> list = MemberDAO.getAllMembers();
+    %>
 <script>
 	
 	function login_go(f) {
@@ -37,7 +37,7 @@
 		var login_chk = false;
 		
 		// 아이디 존재여부 & 비밀번호가 맞는지 체크
-		<% for (MVO mvo:list) { %>
+		<%for (MemberVO mvo:list) {%>
 			// 아이디가 db에 존재하면
 		 	if ( "<%=mvo.getId()%>" == f.id.value) { 
 		 		// 비밀번호가 맞는지 체크

@@ -1,6 +1,6 @@
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
 <%
-	List<MVO> list = DAO.getAllMembers();
+	List<MemberVO> list = MemberDAO.getAllMembers();
 %>
 <script>
 
@@ -30,13 +30,13 @@
 		
 		var tel_chk = false;
 		
-	<% for (MVO mvo:list) { %>
+	<%for (MemberVO mvo:list) {%>
 		// 전화번호가 db에 존재하면
 	 	if ( "<%=mvo.getTel()%>" == f.tel.value) {
 	 		tel_chk = true;
 	 		id = "<%=mvo.getId()%>";
 	 	}
-	<% } %>
+	<%}%>
 	
 		// tel_chk가 false이면 가입되지않은 사용자
 		if (!tel_chk) {
@@ -80,7 +80,7 @@
 			
 			var id_chk = false;
 			var pw = "";
-		<% for (MVO mvo:list) { %>
+		<%for (MemberVO mvo:list) {%>
 			// 아이디가 db에 존재하면
 		 	if ( "<%=mvo.getId()%>" == f.id.value) { 
 		 		// 전화번호가 맞는지 체크

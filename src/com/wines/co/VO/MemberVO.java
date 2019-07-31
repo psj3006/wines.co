@@ -1,8 +1,19 @@
-package com.wines.co;
+package com.wines.co.VO;
 
-public class MVO {
+public class MemberVO {
 
 	private String id, pw, name, addr, tel;
+
+	public MemberVO() { }
+	
+	public MemberVO(String id, String pw, String name, String addr, String tel) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.addr = addr;
+		this.tel = tel;
+	}
 
 	public String getId() {
 		return id;

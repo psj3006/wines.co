@@ -1,5 +1,5 @@
-<%@page import="com.wines.co.DAO"%>
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 
@@ -8,43 +8,43 @@
  	
  --%>
  <%
- 	MVO mvo = null;
-    // 세션확인으로 로그인 여부 체크
-    boolean session_chk = false;
-    if (session.getAttribute("mvo") != null) {
-    	session_chk = true;
-    	mvo = (MVO)session.getAttribute("mvo");
-    }
-                
-    // 쿠키확인으로 로그인 여부 체크
-    boolean cookie_chk = false;
-    // 쿠키 갱신, 세션생성을 위한 변수
-    String id = "";
-    
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null && cookies.length > 0) {
-		for (int i=0; i<cookies.length; i++) { 
-			// id라는 이름의 쿠키가 존재하면
-		   if (cookies[i].getName().equals("id")) { 
-		   cookie_chk = true;
-		   id = cookies[i].getValue();
-		   }
-		}
-	}
-	// 세션없이 쿠키만 존재할때 (브라우저를 껐다가 나중에 다시 켰을때)
-	// 쿠키를 갱신하고(일주일유지) 세션을 다시 만들어줌.
-	if (!session_chk && cookie_chk) {
-		// 쿠키갱신 (일주일)
-		Cookie cookie = new Cookie("id", id);
-	    cookie.setPath("/");
-	    cookie.setMaxAge(7*24*60*60);
-	    response.addCookie(cookie);
-	    
-	    // 세션생성
-		mvo = DAO.getOneMember(id);
-	    session.setAttribute("mvo", mvo);
-		}
-%>
+ 	MemberVO mvo = null;
+        // 세션확인으로 로그인 여부 체크
+        boolean session_chk = false;
+        if (session.getAttribute("mvo") != null) {
+        	session_chk = true;
+        	mvo = (MemberVO)session.getAttribute("mvo");
+        }
+                    
+        // 쿠키확인으로 로그인 여부 체크
+        boolean cookie_chk = false;
+        // 쿠키 갱신, 세션생성을 위한 변수
+        String id = "";
+        
+    	Cookie[] cookies = request.getCookies();
+    	if (cookies != null && cookies.length > 0) {
+    		for (int i=0; i<cookies.length; i++) { 
+    	// id라는 이름의 쿠키가 존재하면
+    		   if (cookies[i].getName().equals("id")) { 
+    		   cookie_chk = true;
+    		   id = cookies[i].getValue();
+    		   }
+    		}
+    	}
+    	// 세션없이 쿠키만 존재할때 (브라우저를 껐다가 나중에 다시 켰을때)
+    	// 쿠키를 갱신하고(일주일유지) 세션을 다시 만들어줌.
+    	if (!session_chk && cookie_chk) {
+    		// 쿠키갱신 (일주일)
+    		Cookie cookie = new Cookie("id", id);
+    	    cookie.setPath("/");
+    	    cookie.setMaxAge(7*24*60*60);
+    	    response.addCookie(cookie);
+    	    
+    	    // 세션생성
+    		mvo = MemberDAO.getOneMember(id);
+    	    session.setAttribute("mvo", mvo);
+    		}
+ %>
 <!DOCTYPE html>
 <html>
 <head>

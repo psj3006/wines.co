@@ -1,10 +1,10 @@
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	// 마이페이지 이동전 다시한번 비밀번호 확인하는 페이지
-	MVO mvo = (MVO)session.getAttribute("mvo");
+	MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 	String pw = mvo.getPw();
 %>
 <!DOCTYPE html>

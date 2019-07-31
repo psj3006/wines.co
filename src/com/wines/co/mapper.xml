@@ -5,19 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.wines.co.mapper">
 
-	<select id="select_all_members" resultType="com.wines.co.MVO">
+	<select id="select_all_members" resultType="com.wines.co.VO.MemberVO">
 		SELECT * FROM member
 	</select>
 	
-	<select id="select_one_member" parameterType="String" resultType="com.wines.co.MVO">
+	<select id="select_one_member" parameterType="String" resultType="com.wines.co.VO.MemberVO">
 		SELECT * FROM member WHERE id=#{id}
 	</select>
 	
-	<insert id="sign_up" parameterType="com.wines.co.MVO">
+	<insert id="sign_up" parameterType="com.wines.co.VO.MemberVO">
 		INSERT INTO member VALUES (#{id}, #{pw}, #{name}, #{addr}, #{tel})
 	</insert>
 	
-	<update id="update_member" parameterType="com.wines.co.MVO">
+	<update id="update_member" parameterType="com.wines.co.VO.MemberVO">
 		UPDATE member SET pw=#{pw}, name=#{name}, addr=#{addr}, tel=#{tel} WHERE id=#{id}
 	</update> 
 	

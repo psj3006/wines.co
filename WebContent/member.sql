@@ -1,4 +1,4 @@
-// 멤버(유저) 테이블
+// 멤버 테이블
 create table member (
 	id varchar2(30) primary key,
 	pw varchar2(20) not null,

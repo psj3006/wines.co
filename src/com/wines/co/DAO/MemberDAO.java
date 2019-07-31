@@ -1,10 +1,13 @@
-package com.wines.co;
+package com.wines.co.DAO;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-public class DAO {
+import com.wines.co.DBService;
+import com.wines.co.VO.MemberVO;
+
+public class MemberDAO {
 
 	private static SqlSession sqlSession;
 	
@@ -15,21 +18,21 @@ public class DAO {
 		return sqlSession;
 	}
 	
-	public static List<MVO> getAllMembers() {
+	public static List<MemberVO> getAllMembers() {
 		return getSqlSession().selectList("select_all_members");
 	}
 	
-	public static MVO getOneMember(String id) {
+	public static MemberVO getOneMember(String id) {
 		return getSqlSession().selectOne("select_one_member", id);
 	}
 	
-	public static int signUp(MVO mvo) {
+	public static int signUp(MemberVO mvo) {
 		int result = getSqlSession().insert("sign_up", mvo);
 		getSqlSession().commit();
 		return result;
 	}
 	
-	public static int updateMember(MVO mvo) {
+	public static int updateMember(MemberVO mvo) {
 		int result = getSqlSession().update("update_member", mvo);
 		getSqlSession().commit();
 		return result;

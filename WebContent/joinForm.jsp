@@ -1,6 +1,6 @@
-<%@page import="com.wines.co.MVO"%>
+<%@page import="com.wines.co.VO.MemberVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.wines.co.DAO"%>
+<%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,11 +35,10 @@
 </style>
 <%
 	// 아이디 중복체크를 위해 전체 리스트를 불러서 아이디를 확인
-	List<MVO> list = DAO.getAllMembers();
+	List<MemberVO> list = MemberDAO.getAllMembers();
 	
 	// jstl로 시도해보려했으나 실패
 	// pageContext.setAttribute("list", list);
-	
 %>
 
 <script>
@@ -70,7 +69,7 @@
 		}
 	
 		// 올바른 형식까지 확인 후 중복 검사
-		<% for (MVO mvo:list) { %>
+		<%for (MemberVO mvo:list) {%>
 		 	if ( "<%=mvo.getId()%>" == f.id.value) { 
 		 		swal("이미 가입된 아이디 !", "다른 아이디를 사용해주세요.", "error");
 		 		f.id.value = "";
@@ -81,7 +80,7 @@
 		 		old_id = f.id.value;
 		  		swal("사용 가능한 아이디 !", "", "success");
 		 	}
-		<% } %> 
+		<%}%> 
 	}
 		<%--   
 		<c:forEach var="list" items="${list }">
@@ -186,7 +185,7 @@
 		    f.tel.focus();
 		    return;
 		}
-		<% for (MVO mvo:list) { %>
+		<%for (MemberVO mvo:list) {%>
 		 	if ( "<%=mvo.getTel()%>" == f.tel.value) { 
 		 		swal("이미 등록된 전화번호 !", "다른 전화번호를 사용해주세요.", "error", {
 					button: "확인"
