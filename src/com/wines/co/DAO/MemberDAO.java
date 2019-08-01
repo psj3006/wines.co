@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.wines.co.DBService;
 import com.wines.co.VO.MemberVO;
+import com.wines.co.service.DBService;
 
 public class MemberDAO {
 

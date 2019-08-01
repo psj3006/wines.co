@@ -23,8 +23,7 @@
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("에러발생, 회원가입을 취소합니다. 잠시 후 다시 시도해주세요.");
-			history.go(-1);
+			location.href="error_page.jsp";
 		</script>
 	</c:otherwise>
 </c:choose>

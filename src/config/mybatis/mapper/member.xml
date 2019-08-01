@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="config.mybatis.mapper.member">
+
+	<select id="select_all_members" resultType="com.wines.co.VO.MemberVO">
+		SELECT * FROM member
+	</select>
+	
+	<select id="select_one_member" parameterType="String" resultType="com.wines.co.VO.MemberVO">
+		SELECT * FROM member WHERE id=#{id}
+	</select>
+	
+	<insert id="sign_up" parameterType="com.wines.co.VO.MemberVO">
+		INSERT INTO member VALUES (#{id}, #{pw}, #{name}, #{addr}, #{tel})
+	</insert>
+	
+	<update id="update_member" parameterType="com.wines.co.VO.MemberVO">
+		UPDATE member SET pw=#{pw}, name=#{name}, addr=#{addr}, tel=#{tel} WHERE id=#{id}
+	</update> 
+	
+</mapper>
