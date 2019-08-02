@@ -95,8 +95,6 @@
 			swal("회원 정보수정완료 !", "잠시 후 마이페이지로 돌아갑니다.", {
 				  button: false,
 			});
-			// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
-			// setTimeout 을 걸어서 1초뒤에 member_update.jsp로 넘어가게했음
 			setTimeout(function(){
 				f.action = "member_update.jsp";
 				f.submit();
@@ -109,7 +107,7 @@
 <body>
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
-				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="mypage.jsp" class="nav-link text-left">My page</a></li>

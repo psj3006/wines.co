@@ -3,7 +3,6 @@
 <%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -69,10 +68,8 @@
 		swal("로그인성공!", "잠시 후 메인페이지로 돌아갑니다.", {
 			  button: false,
 		});
-		// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
-		// setTimeout 을 걸어서 1초뒤에 login.jsp로 넘어가게했음
 		setTimeout(function(){
-			f.action = "login.jsp";
+			f.action = "/wines.co/MController?type=login";
 			f.submit();
 		}, 1000);
 	}
@@ -82,7 +79,7 @@
 <body>
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
-				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>

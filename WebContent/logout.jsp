@@ -12,5 +12,5 @@
 	response.addCookie(cookie);
 	
 	// 메인 페이지로 이동
-	response.sendRedirect("mainPage.jsp");
+	response.sendRedirect("main_page.jsp");
 %>

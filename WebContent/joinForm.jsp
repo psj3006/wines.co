@@ -37,13 +37,11 @@
 	// 아이디 중복체크를 위해 전체 리스트를 불러서 아이디를 확인
 	List<MemberVO> list = MemberDAO.getAllMembers();
 	
-	// jstl로 시도해보려했으나 실패
-	// pageContext.setAttribute("list", list);
 %>
 
 <script>
 	// 중복체크를 했는지 확인하는 변수
-	var valid_chk = false;
+	var valid_chk;
 	
 	// 중복체크 당시의 아이디 ( 중복체크후 아이디 수정방지용 )
 	var old_id = "";
@@ -67,11 +65,12 @@
 			f.id.focus();
 			return;
 		}
-	
+		
 		// 올바른 형식까지 확인 후 중복 검사
 		<%for (MemberVO mvo:list) {%>
 		 	if ( "<%=mvo.getId()%>" == f.id.value) { 
 		 		swal("이미 가입된 아이디 !", "다른 아이디를 사용해주세요.", "error");
+		 		valid_chk = false;
 		 		f.id.value = "";
 		 		f.id.focus();
 		 		return;
@@ -80,17 +79,10 @@
 		 		old_id = f.id.value;
 		  		swal("사용 가능한 아이디 !", "", "success");
 		 	}
-		<%}%> 
+		<%}%>
+		 
+	
 	}
-		<%--   
-		<c:forEach var="list" items="${list }">
-			<c:if test="${list.id eq f.id.value}">
-				swal("이미 가입된 아이디 !", "다른 아이디를 사용해주세요.", "error")
-				
-				return;
-			</c:if>
-		</c:forEach>
-		--%>
 	
 	
 	// 유효성 검사
@@ -199,10 +191,8 @@
 		swal("회원가입 성공 !", "잠시 후 메인페이지로 돌아갑니다.",  {
 			  button: false,
 		});
-		// swal 은 alert 와 다르게 확인을 누르지않아도 자동으로 페이지가 이동해버려서
-		// setTimeout 을 걸어서 1초뒤에 join.jsp로 넘어가게했음
 		setTimeout(function(){
-			f.action = "join.jsp";
+			f.action = "/wines.co/MController?type=signUp";
 			f.submit();
 		}, 1000);
 	}
@@ -213,7 +203,7 @@
 <body>
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
-				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>

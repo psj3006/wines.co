@@ -14,7 +14,7 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 	
-				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="management.jsp" class="nav-link text-left">Management</a></li>
@@ -34,14 +34,14 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 					<span class="login100-form-title p-b-32">
-						물품 등록
+						제품 등록
 					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="이동" onclick="" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
-						물품 수정 및 제거
+						제품 수정 및 제거
 					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="이동" onclick="" />

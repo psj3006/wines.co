@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.wines.co.VO.MemberVO;
-import com.wines.co.service.DBService;
+
+import config.mybatis.DBService;
 
 public class MemberDAO {
 

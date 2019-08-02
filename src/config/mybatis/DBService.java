@@ -1,4 +1,4 @@
-package com.wines.co.service;
+package config.mybatis;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;

@@ -13,7 +13,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-12 text-center">
-            <a href="mainPage.jsp" class="site-logo">
+            <a href="main_page.jsp" class="site-logo">
               <img src="images/logo.png" alt="Image" class="img-fluid">
             </a>
           </div>

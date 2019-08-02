@@ -116,7 +116,7 @@
 <body>
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
-				<li><a href="mainPage.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
                 <li><a href="" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
