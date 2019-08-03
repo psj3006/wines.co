@@ -39,4 +39,9 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public static int deleteMember(String mvo) {
+		int result = getSqlSession().delete("delete_member", mvo);
+		getSqlSession().commit();
+		return result;
+	}
 }

@@ -80,7 +80,7 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
-                <li><a href="" class="nav-link text-left">Shop</a></li>
+                <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li><a href="loginForm.jsp" class="nav-link text-left">My page</a></li>
                 <li class="active"><a href="loginForm.jsp" class="nav-link text-left">Login</a></li>
@@ -139,7 +139,6 @@
 						<input class="login100-form-btn" type="button" value="로그인" onclick="login_go(this.form)" />
 						<input class="login100-form-btn2" type="button" value="회원가입" onclick="location.href='joinForm.jsp'" />
 					</div>
-					
 
 				</form>
 			</div>

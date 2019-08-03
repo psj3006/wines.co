@@ -5,4 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="config.mybatis.mapper.product">
 	
+	<select id="select_all_products" resultType="com.wines.co.VO.ProductVO">
+		SELECT * FROM product ORDER BY p_num
+	</select>
+	
+	<insert id="add_product" parameterType="com.wines.co.VO.ProductVO">
+		INSERT INTO product VALUES (product_seq.NEXTVAL, #{p_name}, #{p_content}, #{p_price}, #{p_saleprice}, #{p_image})
+	</insert>
 </mapper>

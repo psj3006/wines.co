@@ -1,16 +1,18 @@
+<%@page import="com.wines.co.DAO.ProductDAO"%>
+<%@page import="com.wines.co.VO.ProductVO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.wines.co.DAO.MemberDAO"%>
 <%@page import="com.wines.co.VO.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 
-	* start_page.jsp 에서 시작할것.
-	
-	로그인 여부를 세션과 쿠키로 확인해서 로그인이 되어있으면 로그인메뉴대신 로그아웃메뉴가 나오고
- 	마이 페이지를 눌렀을 때, 이동을 다르게 설정.
- --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
+<%
+	List<ProductVO> list = ProductDAO.getAllProducts();
+	pageContext.setAttribute("list", list);
+%>
 <html>
 <head>
   <title>Wines co.</title>
@@ -24,8 +26,8 @@
 <body>
 
     <jsp:include page="frame/header.jsp"></jsp:include>
-                <li class="active"><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
-                <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
+                <li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+                <li class="active"><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
 			<c:choose>
 				<%-- 관리자계정으로 로그인시에 마이 페이지대신 매니지먼트 페이지 --%>
@@ -56,42 +58,57 @@
     </div>
     </div>
     
-    <div class="owl-carousel hero-slide owl-style">
-      <div class="intro-section container" style="background-image: url('images/hero_1.jpg');">
-        <div class="row justify-content-center text-center align-items-center">
-          <div class="col-md-8">
-            <span class="sub-title">훌륭한 와인의 비결</span>
-            <h1>고품질의 원재료</h1>
-          </div>
-        </div>
-      </div>
-
-      <div class="intro-section container" style="background-image: url('images/img_3.jpg');">
-        <div class="row justify-content-center text-center align-items-center">
-          <div class="col-md-8">
-            <span class="sub-title">Welcome !</span>
-            <h1>Wines For Everyone</h1>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    
-    
-
     <div class="site-section mt-5">
       <div class="container">
 
         <div class="row mb-5">
           <div class="col-12 section-title text-center mb-5">
-            <h2 class="d-block">환영합니다</h2>
-            <pre>시중에서는 찾기 힘든 훌륭한 와인을 저렴한 가격으로 만나보세요</pre>
-            <p><a href="product_page.jsp">모든 상품 보러가기<span class="icon-long-arrow-right"></span></a></p>
+            <h2 class="d-block">환영합니다 !</h2>
+            <p>엄선된 고품질의 상품만을 판매하고 있습니다.</p>
           </div>
         </div>
-        
-      </div>
+		
+		<!-- 전체 product 테이블을 불러와서 비어있으면 준비중 메시지, 아니면 상품 표시 -->
+		<c:choose>
+			<c:when test="${empty list}">
+			<div class="col-12 section-title text-center mb-5">
+	            <h2 class="d-block"> 준비중입니다 </h2>
+	        </div>
+        	</c:when>
+        	<c:otherwise>
+	        <div class="row">
+	          <c:forEach var="p" items="${list }">
+	          <div class="col-lg-4 mb-5 col-md-6">
+	            <div class="wine_v_1 text-center pb-4">
+	            <c:choose>
+	              <c:when  test="${!empty p.getP_image() }">
+		              <a href="" class="thumbnail d-block mb-4"><img src="images/${p.getP_image() }" class="img-fluid" style="height:250px"></a>
+	              </c:when>
+	              <c:otherwise>
+	              	  <a href="" class="thumbnail d-block mb-4"><img src="images/logo.png" class="img-fluid" style="height:250px"></a>
+	              </c:otherwise>
+	           </c:choose>
+	              <div>
+	                <h3 class="heading mb-1"><a href="">${p.getP_name() }</a></h3>
+	                <c:choose>
+	                	<c:when  test="${empty p.getP_saleprice()}">
+	                		<span class="price d-block">￦ <fmt:formatNumber value="${p.getP_price() }" pattern="#,###"/></span>
+	               		</c:when>
+	               		<c:otherwise>
+	               			<span class="price d-block">￦ <fmt:formatNumber value="${p.getP_saleprice() }" pattern="#,###"/>&nbsp;&nbsp;&nbsp;<del style="color:red">￦ <fmt:formatNumber value="${p.getP_price() }" pattern="#,###"/></del></span>
+	               		</c:otherwise>
+	                </c:choose>
+	                <a href="" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
+	              </div>
+	            </div>
+	          </div>
+	          </c:forEach>
+	        </div>
+          </c:otherwise>
+        </c:choose>
+        </div>
     </div>
+    
 
     <div class="hero-2" style="background-image: url('images/img_1.jpg');">
      <div class="container">

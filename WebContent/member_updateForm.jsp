@@ -16,7 +16,7 @@
     	// 전화번호 중복확인을 위한 리스트
         List<MemberVO> list = MemberDAO.getAllMembers();
 
-        // 
+        // 아이디를 채워넣기위해 현재 세션의 아이디를 불러옴
         MemberVO mvo = (MemberVO)session.getAttribute("mvo");
         String id = mvo.getId();
     %>
@@ -96,7 +96,7 @@
 				  button: false,
 			});
 			setTimeout(function(){
-				f.action = "member_update.jsp";
+				f.action = "/wines.co/MController?type=update";
 				f.submit();
 			}, 1000);
 		}
@@ -108,10 +108,10 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
-                <li><a href="" class="nav-link text-left">Shop</a></li>
+                <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
                 <li><a href="" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
-                <li><a href="logout.jsp" class="nav-link text-left">Logout</a></li>
+                <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
 

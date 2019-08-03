@@ -21,4 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE member SET pw=#{pw}, name=#{name}, addr=#{addr}, tel=#{tel} WHERE id=#{id}
 	</update> 
 	
+	<delete id="delete_member" parameterType="String">
+		DELETE FROM member WHERE id=#{id}
+	</delete>
+	
 </mapper>

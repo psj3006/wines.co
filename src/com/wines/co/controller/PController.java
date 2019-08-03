@@ -9,18 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wines.co.model.ErrorAction;
 import com.wines.co.model.GoMainAction;
-import com.wines.co.model.member.MemberAction;
-import com.wines.co.model.member.MemberDeleteAction;
-import com.wines.co.model.member.MemberJoinAction;
-import com.wines.co.model.member.MemberLoginAction;
-import com.wines.co.model.member.MemberLogoutAction;
-import com.wines.co.model.member.MemberUpdateAction;
+import com.wines.co.model.product.ProductAction;
+import com.wines.co.model.product.ProductAddAction;
 
-@WebServlet("/MController")
-public class MController extends HttpServlet {
+@WebServlet("/PController")
+public class PController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MController() {
+    public PController() {
         super();
     }
 
@@ -34,24 +30,16 @@ public class MController extends HttpServlet {
 			type = param_type;
 		}
 		
-		MemberAction memberAction = null;
+		ProductAction productAction = null;
 		if (type.equals("error")) {
-			memberAction = new ErrorAction();
+			productAction = new ErrorAction();
 		} else if (type.equals("goMain")) {
-			memberAction = new GoMainAction();
-		} else if (type.equals("signUp")) {
-			memberAction = new MemberJoinAction();
-		} else if (type.equals("login")) {
-			memberAction = new MemberLoginAction();
-		} else if (type.equals("logout")) {
-			memberAction = new MemberLogoutAction();
-		} else if (type.equals("update")) {
-			memberAction = new MemberUpdateAction();
-		} else if (type.equals("delete")) {
-			memberAction = new MemberDeleteAction();
+			productAction = new GoMainAction();
+		} else if (type.equals("add")) {
+			productAction = new ProductAddAction();
 		}
 		
-		String path = memberAction.process(request, response);
+		String path = productAction.process(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

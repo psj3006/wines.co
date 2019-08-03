@@ -38,7 +38,7 @@
 
 					
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="메인 페이지로 이동" onclick="location.href='main_page.jsp'" />
+						<input class="login100-form-btn" type="button" value="메인 페이지로 이동" onclick="location.href='start_page'" />
 					</div>
 					
 
