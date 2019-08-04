@@ -26,4 +26,17 @@ public class ProductDAO {
 		getSqlSession().commit();
 		return result;
 	}
+	public static ProductVO getOneProduct(int p_num) {
+		return getSqlSession().selectOne("select_one_product", p_num);
+	}
+	public static int updateProduct(ProductVO pvo) {
+		int result = getSqlSession().update("update_product", pvo);
+		getSqlSession().commit();
+		return result;
+	}
+	public static int deleteProduct(String p_num) {
+		int result = getSqlSession().delete("delete_product", p_num);
+		getSqlSession().commit();
+		return result;
+	}
 }

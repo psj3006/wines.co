@@ -5,7 +5,7 @@ create table product (
 	p_content varchar2(500) not null,
 	p_price varchar2(10) not null,
 	p_saleprice varchar2(10),
-	p_image varchar2(20)
+	p_image varchar2(50)
 );
 
 create sequence product_seq;

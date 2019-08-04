@@ -41,10 +41,10 @@
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
-						상품 수정 및 제거
+						전체 상품 목록
 					</span>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="" />
+						<input class="login100-form-btn" type="button" value="이동" onclick="location.href='product_view_all.jsp'" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">

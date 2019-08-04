@@ -64,11 +64,14 @@
         <div class="row mb-5">
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">환영합니다 !</h2>
-            <p>엄선된 고품질의 상품만을 판매하고 있습니다.</p>
+            <p>엄선된 고품질의 상품만을 판매하고 있습니다</p>
+            <p>상품 클릭시 상세 페이지로 이동합니다</p>
           </div>
         </div>
 		
 		<!-- 전체 product 테이블을 불러와서 비어있으면 준비중 메시지, 아니면 상품 표시 -->
+		<!-- 이미지가 없는 제품의 경우 로고 이미지 출력 -->
+		<!-- 할인중인 상품은 할인가격도 표시 -->
 		<c:choose>
 			<c:when test="${empty list}">
 			<div class="col-12 section-title text-center mb-5">
@@ -98,7 +101,7 @@
 	               			<span class="price d-block">￦ <fmt:formatNumber value="${p.getP_saleprice() }" pattern="#,###"/>&nbsp;&nbsp;&nbsp;<del style="color:red">￦ <fmt:formatNumber value="${p.getP_price() }" pattern="#,###"/></del></span>
 	               		</c:otherwise>
 	                </c:choose>
-	                <a href="" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
+	                <a href="" class="btn add"><span class="icon-shopping-bag mr-3"></span>장바구니 추가</a>
 	              </div>
 	            </div>
 	          </div>

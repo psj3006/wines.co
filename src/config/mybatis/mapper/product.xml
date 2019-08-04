@@ -9,7 +9,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM product ORDER BY p_num
 	</select>
 	
+	<select id="select_one_product" parameterType="Integer" resultType="com.wines.co.VO.ProductVO">
+		SELECT * FROM product WHERE p_num=#{p_num}
+	</select>
+	
 	<insert id="add_product" parameterType="com.wines.co.VO.ProductVO">
 		INSERT INTO product VALUES (product_seq.NEXTVAL, #{p_name}, #{p_content}, #{p_price}, #{p_saleprice}, #{p_image})
 	</insert>
+	
+	<update id="update_product" parameterType="com.wines.co.VO.ProductVO">
+		UPDATE product SET p_name=#{p_name}, p_content=#{p_content}, p_price=#{p_price}, p_saleprice=#{p_saleprice}, p_image=#{p_image} WHERE p_num=#{p_num}
+	</update>
+	
+	<delete id="delete_product" parameterType="String">
+		DELETE FROM product WHERE p_num=#{p_num}
+	</delete>
+	
 </mapper>
