@@ -34,7 +34,7 @@ public class ProductDAO {
 		getSqlSession().commit();
 		return result;
 	}
-	public static int deleteProduct(String p_num) {
+	public static int deleteProduct(int p_num) {
 		int result = getSqlSession().delete("delete_product", p_num);
 		getSqlSession().commit();
 		return result;

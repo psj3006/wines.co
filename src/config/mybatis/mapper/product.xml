@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE product SET p_name=#{p_name}, p_content=#{p_content}, p_price=#{p_price}, p_saleprice=#{p_saleprice}, p_image=#{p_image} WHERE p_num=#{p_num}
 	</update>
 	
-	<delete id="delete_product" parameterType="String">
+	<delete id="delete_product" parameterType="Integer">
 		DELETE FROM product WHERE p_num=#{p_num}
 	</delete>
 	
