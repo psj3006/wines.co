@@ -23,3 +23,4 @@ insert into product values(product_seq.nextval, 'Morgon Coatrublee', 'Lorem ipsu
 							'175000', '', 'wine_4.png');
 insert into product values(product_seq.nextval, 'No image Sample', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
 							'500', '', '');
+commit

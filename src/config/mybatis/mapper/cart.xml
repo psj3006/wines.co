@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="config.mybatis.mapper.cart">
+
+	<insert id="add_cart" parameterType="com.wines.co.VO.CartVO">
+		INSERT INTO cart VALUES (#{id}, #{p_num}, #{amount});
+	</insert>
+
+</mapper>

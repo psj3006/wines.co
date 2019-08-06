@@ -17,12 +17,8 @@ public class MemberJoinAction implements MemberAction {
 		String addr = request.getParameter("addr");
 		String tel = request.getParameter("tel");
 		
-		MemberVO mvo = new MemberVO();
-		mvo.setId(id);
-		mvo.setPw(pw);
-		mvo.setName(name);
-		mvo.setAddr(addr);
-		mvo.setTel(tel);
+		MemberVO mvo = new MemberVO(id, pw, name, addr, tel);
+		
 		int result = MemberDAO.signUp(mvo);
 		
 		if (result>0) {

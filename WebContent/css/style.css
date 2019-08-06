@@ -1349,10 +1349,11 @@ h1, h2, h3, h4, h5,
   background-size: cover;
   position: relative;
   background-attachment: fixed;
-  background-position: center center; }
+  background-position: center center; 
+  height: 350px}
+  
   .hero-2 > .container .row {
-    height: 50vh;
-    min-height: 500px;
+    min-height: 300px;
     z-index: 2; }
   .hero-2:before {
     content: "";

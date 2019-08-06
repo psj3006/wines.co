@@ -85,14 +85,14 @@
 	            <div class="wine_v_1 text-center pb-4">
 	            <c:choose>
 	              <c:when  test="${!empty p.getP_image() }">
-		              <a href="" class="thumbnail d-block mb-4"><img src="images/${p.getP_image() }" class="img-fluid" style="height:250px"></a>
+		              <a href="product_view_detail.jsp?p_num=${p.getP_num() }" class="thumbnail d-block mb-4"><img src="images/${p.getP_image() }" class="img-fluid" style="height:250px"></a>
 	              </c:when>
 	              <c:otherwise>
-	              	  <a href="" class="thumbnail d-block mb-4"><img src="images/logo.png" class="img-fluid" style="height:250px"></a>
+	              	  <a href="product_view_detail.jsp?p_num=${p.getP_num() }" class="thumbnail d-block mb-4"><img src="images/logo.png" class="img-fluid" style="height:250px"></a>
 	              </c:otherwise>
 	           </c:choose>
 	              <div>
-	                <h3 class="heading mb-1"><a href="">${p.getP_name() }</a></h3>
+	                <h3 class="heading mb-1"><a href="product_view_detail.jsp?p_num=${p.getP_num() }">${p.getP_name() }</a></h3>
 	                <c:choose>
 	                	<c:when  test="${empty p.getP_saleprice()}">
 	                		<span class="price d-block">￦ <fmt:formatNumber value="${p.getP_price() }" pattern="#,###"/></span>
@@ -101,7 +101,6 @@
 	               			<span class="price d-block">￦ <fmt:formatNumber value="${p.getP_saleprice() }" pattern="#,###"/>&nbsp;&nbsp;&nbsp;<del style="color:red">￦ <fmt:formatNumber value="${p.getP_price() }" pattern="#,###"/></del></span>
 	               		</c:otherwise>
 	                </c:choose>
-	                <a href="" class="btn add"><span class="icon-shopping-bag mr-3"></span>장바구니 추가</a>
 	              </div>
 	            </div>
 	          </div>
