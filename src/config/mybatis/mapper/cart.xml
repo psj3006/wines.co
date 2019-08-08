@@ -6,7 +6,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="config.mybatis.mapper.cart">
 
 	<insert id="add_cart" parameterType="com.wines.co.VO.CartVO">
-		INSERT INTO cart VALUES (#{id}, #{p_num}, #{amount});
+		INSERT INTO cart VALUES (cart_seq.NEXTVAL, #{id}, #{p_num}, #{amount})
 	</insert>
-
+	
+	<select id="select_cart" parameterType="String" resultType="com.wines.co.VO.CartVO">
+		SELECT
+			c.c_num as c_num,
+			c.id as id,
+			p.p_num as p_num,
+			p.p_name as p_name,
+			c.amount as amount,
+			p.p_price as p_price,
+			p.p_saleprice as p_saleprice,
+			p.p_image as p_image
+		FROM
+			cart c, product p, member m
+		WHERE m.id = c.id
+			and p.p_num = c.p_num
+			and c.id=#{id}
+		ORDER BY
+			c.c_num
+	</select>
+	
+	<delete id="delete_cart" parameterType="Integer">
+		DELETE FROM cart WHERE c_num=#{c_num}
+	</delete>
+	
+	<delete id="delete_cart_by_id" parameterType="String">
+		DELETE FROM cart WHERE id=#{id}
+	</delete>
 </mapper>

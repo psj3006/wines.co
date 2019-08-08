@@ -52,7 +52,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 				<span class="login100-form-title p-b-32">
-					My Page
+					WELCOME !
 				</span>
 				<span><%= mvo.getId()%></span><span class="txt1 p-b-11"> 님, 환영합니다.</span>
 				<form method="post">
@@ -65,6 +65,7 @@
 					</div>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="확인" onclick="chk_pw(this.form)" />
+						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="history.go(-1)" />
 					</div>
 				</form>
 			</div>

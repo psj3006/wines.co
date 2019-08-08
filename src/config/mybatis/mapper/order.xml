@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="config.mybatis.mapper.order">
+
+	<insert id="add_order" parameterType="com.wines.co.VO.OrderVO">
+		INSERT INTO order_t VALUES (#{o_num}, #{id}, #{o_name}, #{o_addr}, 
+									#{o_tel}, #{totalprice}, #{p_num},
+									#{amount}, SYSDATE)
+	</insert>
+
+	<select id="get_nextval" resultType="int">
+		SELECT order_seq.NEXTVAL FROM dual
+	</select>
+</mapper>

@@ -63,6 +63,7 @@
 					</div>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="회원 탈퇴" onclick="chk_pw(this.form)" />
+						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="history.go(-1)" />
 					</div>
 				</form>
 			</div>

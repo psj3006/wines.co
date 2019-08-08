@@ -12,7 +12,9 @@ import com.wines.co.model.GoMainAction;
 import com.wines.co.model.product.ProductAction;
 import com.wines.co.model.product.ProductAddAction;
 import com.wines.co.model.product.ProductAddCartAction;
+import com.wines.co.model.product.ProductAddOrderAction;
 import com.wines.co.model.product.ProductDeleteAction;
+import com.wines.co.model.product.ProductDeleteCartAction;
 import com.wines.co.model.product.ProductUpdateAction;
 
 @WebServlet("/PController")
@@ -46,8 +48,11 @@ public class PController extends HttpServlet {
 			productAction = new ProductDeleteAction();
 		} else if (type.equals("addCart")) {
 			productAction = new ProductAddCartAction();
-		} 
-		
+		} else if (type.equals("deleteCart")) {
+			productAction = new ProductDeleteCartAction();
+		} else if (type.equals("addOrder")) {
+			productAction = new ProductAddOrderAction();
+		}
 		String path = productAction.process(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

@@ -5,8 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.wines.co.VO.ProductVO;
-
-import config.mybatis.DBService;
+import com.wines.co.service.DBService;
 
 public class ProductDAO {
 	

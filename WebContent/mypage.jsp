@@ -37,14 +37,14 @@
 						장바구니
 					</span>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="" />
+						<input class="login100-form-btn" type="button" value="이동" onclick="location.href='product_view_cart.jsp'" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
 						주문조회
 					</span>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="" />
+						<input class="login100-form-btn" type="button" value="이동" onclick="location.href='product_view_order'" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
