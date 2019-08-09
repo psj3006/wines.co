@@ -9,8 +9,9 @@ import com.wines.co.DAO.MemberDAO;
 import com.wines.co.VO.MemberVO;
 import com.wines.co.model.member.MemberAction;
 import com.wines.co.model.product.ProductAction;
+import com.wines.co.model.qna.QnaAction;
 
-public class GoMainAction implements MemberAction, ProductAction {
+public class GoMainAction implements MemberAction, ProductAction, QnaAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {

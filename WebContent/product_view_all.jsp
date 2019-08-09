@@ -41,9 +41,9 @@
 <body>
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
-				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="management.jsp" class="nav-link text-left">Management</a></li>
                 <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
               </ul>                                                                                                                                                                                                                                                                                        
@@ -59,7 +59,7 @@
     </div>
 	<div class="limiter">
 		<div class="container-login100" style="margin-top:50px;">
-			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55" style="padding:55px 50px; width:700px">
 					  * 상품클릭시 수정페이지로 이동합니다
 					 <hr/>
 					<table>
@@ -82,13 +82,13 @@
 										<tr>
 											<c:choose>
 												<c:when test="${!empty p.getP_image() }">
-													<td><a href="product_view_one.jsp?p_num=${p.getP_num() }"><img src="images/${p.getP_image() }" class="img-fluid" style="height:70px"></a></td>
+													<td><a href="product_updateForm.jsp?p_num=${p.getP_num() }"><img src="images/${p.getP_image() }" class="img-fluid" style="height:70px"></a></td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="product_view_one.jsp?p_num=${p.getP_num() }">이미지 없음</a></td>
+													<td><a href="product_updateForm.jsp?p_num=${p.getP_num() }">이미지 없음</a></td>
 												</c:otherwise>
 											</c:choose>
-											<td><a href="product_view_one.jsp?p_num=${p.getP_num() }">${p.getP_name() }</a></td>
+											<td><a href="product_updateForm.jsp?p_num=${p.getP_num() }">${p.getP_name() }</a></td>
 											<td>${p.getP_price() }</td>
 											<c:choose>
 												<c:when test="${!empty p.getP_saleprice() }">
@@ -100,7 +100,7 @@
 											</c:choose>
 											<td>
 											<form class="login100-form validate-form flex-sb flex-w" method="post" action="/wines.co/PController?type=delete">
-												&nbsp;<input type="submit" value="X"/>
+												<input type="submit" value="X" style="margin:0 auto"/>
 												<input type="hidden" name="p_num" value="${p.getP_num() }" />
 											</form>	
 											</td>
@@ -119,7 +119,7 @@
 						</tbody>
 					</table>
 					<br/><hr/><br/>
-				<input class="login100-form-btn" type="button" value="돌아가기" onclick="history.go(-1)" style="margin-left:110px"/>
+				<input class="login100-form-btn" type="button" value="돌아가기" onclick="history.go(-1)" style="margin-left:212.5px"/>
 
 			</div>
 		</div>

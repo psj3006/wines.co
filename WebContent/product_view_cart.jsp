@@ -6,6 +6,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%-- mypage 에서 넘어올 수 있는 장바구니 페이지 --%>
+
 <%
 	MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 	String id = mvo.getId();
@@ -70,9 +73,9 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 	
-				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
                 <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
               </ul>                                                                                                                                                                                                                                                                                         
@@ -87,8 +90,8 @@
     
     </div>
 	<div class="limiter">
-		<div class="container-login100" style="margin-top:50px;">
-			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55" style="padding:55px 50px; width:700px">
 					<span>[ <%=id%> ] </span><span class="txt1 p-b-11"> 님의 장바구니</span>
 					<hr/>
 					<table>
@@ -108,13 +111,13 @@
 										<tr>
 											<c:choose>
 												<c:when test="${!empty c.getP_image() }">
-													<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail d-block mb-4"><img src="images/${c.getP_image() }" class="img-fluid" style="height:70px"></a></td>
+													<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail mb-4"><img src="images/${c.getP_image() }" class="img-fluid" style="height:70px"></a></td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail d-block mb-4">이미지 없음</a></td>
+													<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail mb-4">이미지 없음</a></td>
 												</c:otherwise>
 											</c:choose>
-											<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail d-block mb-4">${c.getP_name() }</a></td>
+											<td><a href="product_view_detail.jsp?p_num=${c.getP_num() }" class="thumbnail mb-4">${c.getP_name() }</a></td>
 											<td>${c.getAmount() }</td>
 											<c:choose>
 												<c:when test="${!empty c.getP_saleprice() }">
@@ -126,7 +129,7 @@
 											</c:choose>
 											<td>
 											<form class="login100-form validate-form flex-sb flex-w" method="post" action="/wines.co/PController?type=deleteCart">
-												&nbsp;<input type="submit" value="X"/>
+												<input type="submit" value="X" style="margin:0 auto"/>
 												<input type="hidden" name="c_num" value="${c.getC_num() }" />
 											</form>	
 											</td>
@@ -162,7 +165,7 @@
 					</table>
 					<hr/>
 					<br/>
-					<input class="login100-form-btn" type="button" value="돌아가기" onclick="history.go(-1)" style="margin-left:110px"/>
+					<input class="login100-form-btn" type="button" value="상품 보러가기" onclick="location.href='product_page.jsp'" style="margin-left:212.5px"/>
 					
 
 			</div>

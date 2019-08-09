@@ -8,15 +8,14 @@ create table order_t (
 	p_num number(10) not null,
 	amount number(5) not null,
 	order_date date not null,
-	foreign key(id) references member(id),
-	foreign key(p_num) references product(p_num)
+	foreign key(id) references member(id) on delete cascade,
+	foreign key(p_num) references product(p_num) on delete cascade
 );
 
 create sequence order_seq
 	increment by 1
 	start with 10000
 	maxvalue 999999
-	nocycle;
+	nocycle;	
 	
-select * from ORDER_T;
-drop table order_t;
+	select * from order_t;

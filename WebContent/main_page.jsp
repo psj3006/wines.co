@@ -24,9 +24,9 @@
 <body>
 
     <jsp:include page="frame/header.jsp"></jsp:include>
-                <li class="active"><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+                <li class="active"><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
 			<c:choose>
 				<%-- 관리자계정으로 로그인시에 마이 페이지대신 매니지먼트 페이지 --%>
 				<c:when test="${mvo.getId() != 'null' && mvo.getId() eq 'admin'}">

@@ -5,8 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="config.mybatis.mapper.product">
 	
+	<!-- 내림차순 정렬로 최근 등록한 상품이 제일 위에 보이게 설정 -->
 	<select id="select_all_products" resultType="com.wines.co.VO.ProductVO">
-		SELECT * FROM product ORDER BY p_num
+		SELECT * FROM product ORDER BY p_num DESC 
 	</select>
 	
 	<select id="select_one_product" parameterType="Integer" resultType="com.wines.co.VO.ProductVO">

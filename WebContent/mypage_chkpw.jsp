@@ -32,9 +32,9 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 	
-				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="mypage_chkpw.jsp" class="nav-link text-left">My page</a></li>
                 <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
               </ul>                                                                                                                                                                                                                                                                                         

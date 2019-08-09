@@ -14,4 +14,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="get_nextval" resultType="int">
 		SELECT order_seq.NEXTVAL FROM dual
 	</select>
+	
+	<select id="get_o_numbers" parameterType="String" resultType="Integer">
+		SELECT DISTINCT o_num FROM order_t WHERE id=#{id} ORDER BY o_num
+	</select>
+	
+	<select id="get_order_info" parameterType="Integer" resultType="com.wines.co.VO.OrderVO">
+		SELECT
+			p.p_name as p_name,
+			o.o_name as o_name,
+			o.o_addr as o_addr,
+			o.o_tel as o_tel,
+			o.totalprice as totalprice,
+			o.order_date as order_date
+		FROM
+			order_t o, product p
+		WHERE p.p_num = o.p_num
+			AND o.o_num=#{o_num}
+			AND rownum=1
+	</select>
+	
+	<select id="get_count" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(*) FROM order_t WHERE o_num=#{o_num}
+	</select>
+	
+	<select id="get_all_list" parameterType="Integer" resultType="com.wines.co.VO.OrderVO">
+		SELECT
+			o.o_num as o_num,
+			o.o_name as o_name,
+			o.o_addr as o_addr,
+			o.o_tel as o_tel,
+			p.p_num as p_num,
+			p.p_name as p_name,
+			o.amount as amount,
+			p.p_price as p_price,
+			p.p_saleprice as p_saleprice,
+			p.p_image as p_image
+		FROM
+			order_t o, product p
+		WHERE p.p_num = o.p_num
+			AND o.o_num=#{o_num}
+		ORDER BY
+			o.p_num
+	</select>
 </mapper>

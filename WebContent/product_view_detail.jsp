@@ -42,15 +42,18 @@
 		}
   </style>
   <script>
+  
   		// 장바구니에 담을 상품의 갯수와 총금액
   		var amount = 0;
   		var totalprice = 0;
+  		
   		// 금액의 형식을 맞춰주는 addComma 함수
 		function addComma(num) {
 			var regexp = /\B(?=(\d{3})+(?!\d))/g;
 			return num.toString().replace(regexp, ',');
 		}
-  		// 금액과 갯수 표시
+  		
+  		// 담기 클릭시에 금액과 갯수 표시
   		function show(f) {
   			amount += Number(f.count.value);
   			totalprice = f.p_saleprice.value * amount;
@@ -63,6 +66,7 @@
   			document.getElementById("cartbutton").setAttribute("style", 'display:inline');
   			document.getElementById("deletebutton").setAttribute("style", 'display:inline');
   		}
+  		
   		// 금액과 갯수 제거
   		function remove() {
   			amount = 0;
@@ -72,9 +76,10 @@
   			document.getElementById("cartbutton").setAttribute("style", 'display:none');
   			document.getElementById("deletebutton").setAttribute("style", 'display:none');
   		}
-  		// 카트에 담기
+  		
+  		// 장바구니 추가 
   		function add_cart() {
-  			// 빨간줄은 그어지는데 동작은 잘됨
+  			// 빨간줄은 그어지는데 동작은 잘됨 (로그인여부 체크)
   			if (${session_chk || cookie_chk}) {
   				if (amount <= 0) {
   					swal("상품을 담은 후에 추가해주세요.", {
@@ -106,9 +111,9 @@
 <body>
 
     <jsp:include page="frame/header.jsp"></jsp:include>
-                <li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+                <li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li class="active"><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
 			<c:choose>
 				<%-- 관리자계정으로 로그인시에 마이 페이지대신 매니지먼트 페이지 --%>
 				<c:when test="${mvo.getId() != 'null' && mvo.getId() eq 'admin'}">

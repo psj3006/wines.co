@@ -14,9 +14,9 @@
 
 	<jsp:include page="frame/header.jsp"></jsp:include>
 	
-				<li><a href="main_page.jsp" class="nav-link text-left">Home</a></li>
+				<li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
-                <li><a href="" class="nav-link text-left">Q & A</a></li>
+                <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
                 <li class="active"><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
                 <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
               </ul>                                                                                                                                                                                                                                                                                         
@@ -44,7 +44,7 @@
 						주문조회
 					</span>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="location.href='product_view_order'" />
+						<input class="login100-form-btn" type="button" value="이동" onclick="location.href='product_view_order.jsp'" />
 					</div>
 					<br /><hr /><br />
 					<span class="login100-form-title p-b-32">
