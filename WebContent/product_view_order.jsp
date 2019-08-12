@@ -70,7 +70,7 @@
 								if (o_list!=null) {
 									for(int i=0; i<o_list.size(); i++) { %>
 									<tr>
-										<td><a href="product_view order_detail.jsp?o_num=<%=o_list.get(i) %>" class="thumbnail mb-4"><%= o_list.get(i) %></a></td>
+										<td><a href="product_view_order_detail.jsp?o_num=<%=o_list.get(i) %>" class="thumbnail mb-4"><%= o_list.get(i) %></a></td>
 										
 										<% OrderVO ovo = OrderDAO.getOrderInfoByO_num(o_list.get(i)); 
 										   int totalprice = ovo.getTotalprice();
@@ -78,7 +78,7 @@
 										// 상품이 한가지가 아닐경우 (상품1 외 ** 종) 출력을 위해 카운트 생성
 										   int count = OrderDAO.getCountOfOrders((o_list.get(i))); %>
 										
-										<td><a href="product_view order_detail.jsp?o_num=<%=o_list.get(i) %>" class="thumbnail mb-4"><%= ovo.getP_name() %> <% if (count>1) { %> 외 <%=count-1 %> 종 <% } %></a></td>
+										<td><a href="product_view_order_detail.jsp?o_num=<%=o_list.get(i) %>" class="thumbnail mb-4"><%= ovo.getP_name() %> <% if (count>1) { %> 외 <%=count-1 %> 종 <% } %></a></td>
 										<td>￦ <fmt:formatNumber value="${totalprice }" pattern="#,###"/></td>
 										<td><%= ovo.getOrder_date().substring(0, 10) %></td>
 									</tr>

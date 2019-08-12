@@ -1,17 +1,24 @@
 package com.wines.co.VO;
 
-public class QnaVO {
-
-	int q_num, hit;
-	String id, pw, subject, content, regdate;
+public class CommentVO {
+	int com_num, q_num;
+	String id, content, regdate;
 	
-	QnaVO() { }
+	CommentVO() { }
 
-	public QnaVO(String id, String subject, String content) {
+	public CommentVO(int q_num, String id, String content) {
 		super();
+		this.q_num = q_num;
 		this.id = id;
-		this.subject = subject;
 		this.content = content;
+	}
+
+	public int getCom_num() {
+		return com_num;
+	}
+
+	public void setCom_num(int com_num) {
+		this.com_num = com_num;
 	}
 
 	public int getQ_num() {
@@ -30,22 +37,6 @@ public class QnaVO {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
-	}
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -60,14 +51,6 @@ public class QnaVO {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
-	}
-
-	public int getHit() {
-		return hit;
-	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
 	}
 	
 	

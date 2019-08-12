@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.wines.co.model.ErrorAction;
 import com.wines.co.model.qna.GoQnaPageAction;
 import com.wines.co.model.qna.QnaAction;
+import com.wines.co.model.qna.QnaViewAction;
+import com.wines.co.model.qna.QnaWriteAction;
 
 @WebServlet("/QController")
 public class QController extends HttpServlet {
@@ -34,8 +36,12 @@ public class QController extends HttpServlet {
 			qnaAction = new ErrorAction();
 		} else if (type.equals("goQna")) {
 			qnaAction = new GoQnaPageAction();
-		}
-		
+		} else if (type.equals("write")) {
+			qnaAction = new QnaWriteAction();
+		} else if (type.equals("qna_view")) {
+			qnaAction = new QnaViewAction();
+		} 
+
 		String path = qnaAction.process(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

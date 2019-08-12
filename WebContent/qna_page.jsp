@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,8 @@
 	tr, td, th{ text-align: center; }
 	a { text-decoration: none; color: black; }
 	a:hover { text-weight: bold; }
+	.disable { color: silver; }
+	.now { font-weight: bold; }
 	#writebutton {
 		color: #fff;
 		line-height: 0.9;
@@ -32,6 +35,13 @@
 		background-color: #57b846;
 	}
 </style>
+<script>
+	function login_plz() {
+		swal("로그인이 필요합니다 !", {
+			button: "확인"
+		});
+	}
+</script>
 </head>
 <body>
 
@@ -73,37 +83,92 @@
     </div>
 	
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" style="margin-top:50px;">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55" style="padding:55px 50px; width:700px">
-				
-				<p style="text-align: right;"><input id="writebutton" type="button" value="글쓰기" onclick="" /></p>
+			<c:if test="${!session_chk && !cookie_chk}">
+	    		<div class="col-12 section-title text-center mb-5">
+	           		<p>글 작성을 위해서는 로그인이 필요합니다.</p>
+	         	</div>
+			</c:if>
+				<c:choose>
+	        		<c:when test="${session_chk eq true || cookie_chk eq true}">
+		        		<p style="text-align: right;"><input id="writebutton" type="button" value="글쓰기" onclick="location.href='qna_write.jsp'" /></p>
+					</c:when>
+					<c:otherwise>
+		        		<p style="text-align: right;"><input id="writebutton" type="button" value="글쓰기" onclick="login_plz()"/></p>
+		        	</c:otherwise>
+		        </c:choose>
 			<table>
-				<tr>
-					<td style="width:10%">번호</td>
-					<td style="width:25%">작성자</td>
-					<td style="width:45%">제목</td>
-					<td style="width:30%">작성일</td>
-				</tr>
+				<thead>
+					<tr>
+						<td style="width:10%">번호</td>
+						<td style="width:15%">작성자</td>
+						<td style="width:40%">제목</td>
+						<td style="width:20%">작성일</td>
+						<td style="width:15%">조회수</td>
+					</tr>
+				</thead>
+				<tbody>
+				<!-- fn:split 을 이용해서 이메일 주소(id) 중에 '@' 앞부분만 작성자에 보이게 함 -->
 				<c:choose>
 					<c:when test="${not empty list }">
 						<c:forEach var="q" items="${list }">
 						<tr>
 							<td>${q.getQ_num() }</td>
-							<td>${q.getId() }</td>
-							<td><a class="thumbnail mb-4" href="">${q.getSubject() }</a></td>
+							<td style="word-break:break-all">
+								<c:set var="id" value="${fn:split(q.getId(), '@') }" />
+								<c:forEach var="id" items="${id}" varStatus="i">
+      							  <c:if test="${i.count == 1}">${id }</c:if>
+								</c:forEach> 
+							</td>
+							<td style="word-break:break-all"><a class="thumbnail mb-4" href="/wines.co/QController?type=qna_view&q_num=${q.getQ_num() }&nowPage=${pvo.getNowPage() }">${q.getSubject() }</a></td>
 							<td>
 								<fmt:parseDate value="${q.getRegdate()}" var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss"/>
 								<fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>
 							</td>
+							<td>${q.getHit() }</td>
 						</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4">게시물 없음</td>
+							<td colspan="5">게시물 없음</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="5">
+						<c:choose>
+							<c:when test="${pvo.getBeginPage() <= pvo.getPagePerBlock() }">
+								<span class="disable">◀&nbsp;</span>
+							</c:when>
+							<c:otherwise>
+								<a href="/wines.co/QController?type=goQna&cPage=${pvo.getBeginPage() - 1 }">◀&nbsp;</a>
+							</c:otherwise>
+						</c:choose>
+						<c:forEach var="p" begin="${pvo.getBeginPage() }" end="${pvo.getEndPage() }" step="1">
+							<c:choose>
+								<c:when test="${p eq pvo.getNowPage() }">
+									<span class="now">${p }&nbsp;</span>
+								</c:when>
+								<c:otherwise>
+									<a href="/wines.co/QController?type=goQna&nowPage=${p }">${p }&nbsp;</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${pvo.getEndPage() >= pvo.getTotalPage() }">
+								<span class="disable">&nbsp;▶</span>
+							</c:when>
+							<c:otherwise>
+								<a href="/0805_MVC_BBS/Controller?type=allListView&cPage=${pvo.getBeginPage() + pvo.getPagePerBlock() }">&nbsp;▶</a>
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+				</tfoot>
 			</table>
 			</div>
 		</div>

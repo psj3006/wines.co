@@ -5,8 +5,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="config.mybatis.mapper.qna">
 
-	<select id="select_all_list" resultType="com.wines.co.VO.QnaVO">
-		SELECT * FROM qna ORDER BY q_num DESC 
+	<select id="select_all_list" parameterType="Map" resultType="com.wines.co.VO.QnaVO">
+		SELECT * FROM (SELECT rownum r_num, a.* FROM 
+				(SELECT * FROM qna ORDER BY q_num DESC)
+				a) WHERE r_num BETWEEN #{begin} AND #{end}
 	</select>
 
+	<select id="totalRecordCount" resultType="int">
+		SELECT count(*) FROM qna
+	</select>
+
+	<select id="select_one_list" parameterType="int" resultType="com.wines.co.VO.QnaVO">
+		SELECT
+			q.q_num as q_num,
+			q.id as id,
+			m.pw as pw,
+			q.subject as subject,
+			q.content as content,
+			q.regdate as regdate,
+			q.hit as hit
+		FROM
+			qna q, member m
+		WHERE m.id = q.id
+			and q.q_num=#{q_num}
+	</select>
+
+	<insert id="write_qna" parameterType="com.wines.co.VO.QnaVO">
+		INSERT INTO qna VALUES (qna_seq.NEXTVAL, #{id}, #{subject}, #{content}, SYSDATE, 0)
+	</insert>
+	
+	<update id="increment_hit" parameterType="com.wines.co.VO.QnaVO">
+		UPDATE qna SET hit=#{hit} WHERE q_num=#{q_num}
+	</update>
+	
+	<select id="select_comment_list" parameterType="int" resultType="com.wines.co.VO.CommentVO">
+		SELECT * FROM qna_comment WHERE q_num=#{q_num} ORDER BY com_num
+	</select>
 </mapper>
