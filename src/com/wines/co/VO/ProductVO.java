@@ -3,7 +3,9 @@ package com.wines.co.VO;
 public class ProductVO {
 	int p_num;
 	String p_name, p_content, p_price, p_saleprice, p_image;
+	
 	public ProductVO() { }
+	
 	public ProductVO(int p_num, String p_name, String p_content, String p_price, String p_saleprice, String p_image) {
 		super();
 		this.p_num = p_num;

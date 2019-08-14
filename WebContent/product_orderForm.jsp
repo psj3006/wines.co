@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- 장바구니에서 주문하기로 넘어오는 주문페이지 -->
 <%
 	MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 	String id = mvo.getId();
@@ -24,7 +25,7 @@
 <style>
 	table {border-collapse: collapse; width:100%;}
 	thead tr th, td {padding:10px}
-	tr, td, th{ text-align: center; }
+	tr, td, th{ text-align: center; word-break:break-all }
 </style>
 <script>
 	function go_order(f) {

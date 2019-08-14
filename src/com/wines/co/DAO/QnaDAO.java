@@ -47,4 +47,32 @@ public class QnaDAO {
 	public static List<CommentVO> getCommentList(int q_num) {
 		return getSqlSession().selectList("select_comment_list", q_num);
 	}
+	
+	public static int deleteComment(int com_num) {
+		int result = getSqlSession().delete("delete_comment", com_num);
+		getSqlSession().commit();
+		return result;
+	}
+
+	public static int WriteComment(CommentVO cvo) {
+		int result = getSqlSession().insert("write_comment", cvo);
+		getSqlSession().commit();
+		return result;
+	}
+	
+	public static int updateQna(QnaVO qvo) {
+		int result = getSqlSession().update("update_qna", qvo);
+		getSqlSession().commit();
+		return result;
+	}
+	
+	public static int deleteQna(int q_num) {
+		int result = getSqlSession().delete("delete_qna", q_num);
+		getSqlSession().commit();
+		return result;
+	}
+	
+	public static List<QnaVO> selectAllById(String id) {
+		return getSqlSession().selectList("select_all_by_id", id);
+	}
 }

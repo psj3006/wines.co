@@ -27,7 +27,7 @@ public class MemberUpdateAction implements MemberAction {
 		if (result>0) {
 			return "mypage.jsp";
 		} else {
-			return "error_page.jsp";
+			return "MController";
 		}
 	}
 

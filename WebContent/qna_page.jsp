@@ -17,7 +17,7 @@
 <style>
 	table {border-collapse: collapse; width:100%;}
 	thead tr th, td {padding:10px}
-	tr, td, th{ text-align: center; }
+	tr, td, th{ text-align: center; word-break:break-all }
 	a { text-decoration: none; color: black; }
 	a:hover { text-weight: bold; }
 	.disable { color: silver; }
@@ -115,13 +115,13 @@
 						<c:forEach var="q" items="${list }">
 						<tr>
 							<td>${q.getQ_num() }</td>
-							<td style="word-break:break-all">
+							<td>
 								<c:set var="id" value="${fn:split(q.getId(), '@') }" />
 								<c:forEach var="id" items="${id}" varStatus="i">
       							  <c:if test="${i.count == 1}">${id }</c:if>
 								</c:forEach> 
 							</td>
-							<td style="word-break:break-all"><a class="thumbnail mb-4" href="/wines.co/QController?type=qna_view&q_num=${q.getQ_num() }&nowPage=${pvo.getNowPage() }">${q.getSubject() }</a></td>
+							<td><a class="thumbnail mb-4" href="/wines.co/QController?type=qna_view&q_num=${q.getQ_num() }&nowPage=${pvo.getNowPage() }">${q.getSubject() }</a></td>
 							<td>
 								<fmt:parseDate value="${q.getRegdate()}" var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss"/>
 								<fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>

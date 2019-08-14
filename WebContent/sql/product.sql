@@ -11,6 +11,8 @@ create table product (
 create sequence product_seq;
 
 // ป๙วร ตฅภฬลอ
+insert into product values(product_seq.nextval, 'No image Sample', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
+							'500', '', '');
 insert into product values(product_seq.nextval, 'Trius Cabernet France', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
 							'200000', '175000', 'wine_rose.png');
 insert into product values(product_seq.nextval, 'Maison Castel Pinot Noir', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
@@ -21,5 +23,4 @@ insert into product values(product_seq.nextval, 'Simple Sample', 'Lorem ipsum do
 							'100000', '85000', 'wine_2.png');
 insert into product values(product_seq.nextval, 'Morgon Coatrublee', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
 							'175000', '', 'wine_4.png');
-insert into product values(product_seq.nextval, 'No image Sample', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, perspiciatis!',
-							'500', '', '');
+

@@ -8,7 +8,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<jsp:include page="frame/stylesheets.jsp"></jsp:include>
-
+<script>
+	function manage_members() {
+		location.href = "/wines.co/MController?type=goManageMembers";
+	}
+</script>
 </head>
 <body>
 
@@ -51,7 +55,7 @@
 						회원 관리
 					</span>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="이동" onclick="" />
+						<input class="login100-form-btn" type="button" value="이동" onclick="manage_members()" />
 					</div>
 			</div>
 		</div>

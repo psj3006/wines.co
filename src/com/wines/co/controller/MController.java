@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wines.co.model.ErrorAction;
 import com.wines.co.model.GoMainAction;
+import com.wines.co.model.member.GoMemberDetailPageAction;
+import com.wines.co.model.member.GoMembersPageAction;
 import com.wines.co.model.member.MemberAction;
 import com.wines.co.model.member.MemberDeleteAction;
 import com.wines.co.model.member.MemberJoinAction;
@@ -49,6 +51,10 @@ public class MController extends HttpServlet {
 			memberAction = new MemberUpdateAction();
 		} else if (type.equals("delete")) {
 			memberAction = new MemberDeleteAction();
+		} else if (type.equals("goManageMembers")) {
+			memberAction = new GoMembersPageAction();
+		} else if (type.equals("goMemberDetail")) {
+			memberAction = new GoMemberDetailPageAction();
 		}
 		
 		String path = memberAction.process(request, response);

@@ -20,7 +20,7 @@ public class MemberDeleteAction implements MemberAction {
 			// 로그아웃을 통해 세션과 쿠키 초기화하고 메인으로 이동
 			return "MController?type=logout";
 		} else {
-			return "error_page.jsp";
+			return "MController";
 		}
 	}
 

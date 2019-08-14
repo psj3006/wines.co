@@ -5,7 +5,7 @@ public class QnaVO {
 	int q_num, hit;
 	String id, pw, subject, content, regdate;
 	
-	QnaVO() { }
+	public QnaVO() { }
 
 	public QnaVO(String id, String subject, String content) {
 		super();

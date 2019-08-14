@@ -8,6 +8,7 @@ create table member (
 );
 
 // 어드민용 계정
-insert into member values ('admin', '1111', 'admin', 'admin', 'admin');
+insert into member values ('admin', '1111', 'admin', 'admin', '00000000000');
 // 테스트용 일반계정
-insert into member values ('test', '1111', 'test', 'test', 'test');
+insert into member values ('test', '1111', 'test', 'test', '0090090009');
+

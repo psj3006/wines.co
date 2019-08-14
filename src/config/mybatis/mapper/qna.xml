@@ -41,4 +41,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_comment_list" parameterType="int" resultType="com.wines.co.VO.CommentVO">
 		SELECT * FROM qna_comment WHERE q_num=#{q_num} ORDER BY com_num
 	</select>
+	
+	<delete id="delete_comment" parameterType="int">
+		DELETE FROM qna_comment WHERE com_num=#{com_num}
+	</delete>
+
+	<insert id="write_comment" parameterType="com.wines.co.VO.CommentVO">
+		INSERT INTO qna_comment VALUES (qna_comment_seq.NEXTVAL, #{id}, #{com_content}, SYSDATE, #{q_num})
+	</insert>
+	
+	<update id="update_qna" parameterType="com.wines.co.VO.QnaVO">
+		UPDATE qna SET subject=#{subject}, content=#{content} WHERE q_num=#{q_num}
+	</update>
+	
+	<delete id="delete_qna" parameterType="int">
+		DELETE FROM qna WHERE q_num=#{q_num}
+	</delete>
+	
+	<select id="select_all_by_id" parameterType="String" resultType="com.wines.co.VO.QnaVO">
+		SELECT * FROM qna WHERE id=#{id}
+	</select>
 </mapper>

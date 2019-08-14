@@ -14,7 +14,7 @@
 <style>
 	table {border-collapse: collapse; width:100%;}
 	thead tr th, td {padding:10px}
-	tr, td, th{ text-align: center; }
+	tr, td, th { text-align: center; word-break:break-all }
 	tr td input {
 		color: #fff;
 		line-height: 0.9;
@@ -40,10 +40,57 @@
 		background-color: #57b846;
 	}
 </style>
+<%
+	String id = null;
+	if (session.getAttribute("mvo")!=null) {
+		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+		id = mvo.getId();
+	}
+%>
 <script>
  // 수정 & 삭제 페이지
+ 	function up_del_qna(f) {
+ 		if (f.id.value == '<%=id %>' || '<%=id%>' == 'admin') {
+			f.action = "qna_up_del_page.jsp";
+			f.submit();
+ 		} else {
+ 			swal("자신이 등록한 게시물만 수정이 가능합니다", {
+				button: "확인"
+			});
+			return;
+ 		}
+ 	}
  // 댓글 삭제 클릭시 아이디 맞는지 확인후 삭제
- // 댓글 등록 클릭시 등록
+ 	function delete_comment(f) {
+		if (f.id.value == '<%=id %>' || '<%=id%>' == 'admin') {
+			f.action = "/wines.co/QController?type=deleteCom";
+			f.submit();
+		} else {
+			swal("자신이 등록한 댓글만 삭제할 수 있습니다", {
+				button: "확인"
+			});
+			return;
+		}
+	}
+ 
+ // 댓글 달기 클릭시 댓글 등록
+ 	function write_comment(f) {
+	 	if ('<%=id %>' == 'null') {
+	 		swal("댓글을 작성하려면 로그인이 필요합니다", {
+				button: "확인"
+			});
+			return;
+	 	}
+	 	if (f.com_content.value == "") {
+			swal("내용을 입력해주세요.", {
+				button: "확인"
+			});
+			f.com_content.focus();
+			return;
+		}
+	 	f.action = "/wines.co/QController?type=writeCom";
+	 	f.submit();
+ }
 </script>
 </head>
 <body>
@@ -87,13 +134,18 @@
 					${qvo.getSubject() }
 				</p>
 				<form method="post">
-					<div class="wrap-input100 validate-input m-b-36" style="padding:10px">
-						${qvo.getContent() }
+					<div class="wrap-input100 validate-input m-b-36" style="padding:10px;">
+					<jsp:scriptlet>
+    					pageContext.setAttribute("cr", "\r");
+					    pageContext.setAttribute("lf", "\n");
+					    pageContext.setAttribute("crlf", "\r\n");
+					</jsp:scriptlet>
+						${fn:replace(qvo.getContent() , crlf, '</br>' )}
 					</div>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="button" value="수정&삭제" onclick="" />
+						<input class="login100-form-btn" type="button" value="수정&삭제" onclick="up_del_qna(this.form)" />
+						<input type="hidden" name="id" value="${qvo.getId() }" />
 						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="location.href='/wines.co/QController?type=goQna&nowPage=${nowPage}'" style="right:50px"/>
-						<input type="hidden" name="nowPage" value="${nowPage }" />
 					</div>
 				</form>
 				<br/><hr/><br/>
@@ -111,16 +163,16 @@
 		      							  <c:if test="${i.count == 1}">${id }</c:if>
 										</c:forEach> 
 									</td>
-									<td style="width:50%; word-break:break-all">${c.getContent() }</td>
-									<td style="width:20%">${c.getRegdate()}</td>
+									<td style="width:50%">${c.getCom_content() }</td>
+									<td style="width:18%">${c.getCom_regdate()}</td>
 									<td style="width:10%">
-										<input type="button" value="X" style="margin:0 auto" onclick=""/>
-										<input type="hidden" name="c_num" value="${c.getCom_num() }" />
+										<input type="button" value="X" style="margin:0 auto" onclick="delete_comment(this.form)"/>
+										<input type="hidden" name="com_num" value="${c.getCom_num() }" />		<!-- 삭제를 위한 댓글번호 -->
+										<input type="hidden" name="id" value="${c.getId() }" />				<!-- 본인이 쓴 댓글인지 확인 -->
+										<input type="hidden" name="q_num" value="${qvo.getQ_num() }" />		<!-- 삭제 후 본 페이지로 돌아오기 위한 글번호 -->
 									</td>
 								</tr>
 							</table>
-							<input type="hidden" name="q_num" value="${c.getQ_num() }" />	
-							<input type="hidden" name="pw2" value="${qvo.getPw() }" /> <br />
 						</form>
 					</c:forEach>
 				</c:if>
@@ -129,12 +181,13 @@
 					<table>
 						<tbody>
 							<tr>
-								<th><input id="writebutton" type="button" value="댓글 달기" onclick="" /></th>
-								<td><textarea name="content" rows="5" cols="50" style="border:1px solid lightgray; z-index:10"></textarea></td>
+								<th><input id="writebutton" type="button" value="댓글 달기" onclick="write_comment(this.form)" /></th>
+								<td style="border:1px solid lightgray; width:370px"><textarea name="com_content" rows="5" cols="50" style="margin:0px; padding:10px"></textarea></td>
 							</tr>
 						</tbody>
 					</table>
 					<input type="hidden" name="q_num" value="${qvo.getQ_num() }" />
+					<input type="hidden" name="id" value="<%=id %>" />
 				</form>
 			</div>
 		</div>

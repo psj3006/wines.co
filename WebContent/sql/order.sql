@@ -17,5 +17,3 @@ create sequence order_seq
 	start with 10000
 	maxvalue 999999
 	nocycle;	
-	
-	select * from order_t;

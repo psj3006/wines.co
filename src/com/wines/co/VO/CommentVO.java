@@ -2,15 +2,15 @@ package com.wines.co.VO;
 
 public class CommentVO {
 	int com_num, q_num;
-	String id, content, regdate;
+	String id, com_content, com_regdate;
 	
-	CommentVO() { }
+	public CommentVO() { }
 
-	public CommentVO(int q_num, String id, String content) {
+	public CommentVO(int q_num, String id, String com_content) {
 		super();
 		this.q_num = q_num;
 		this.id = id;
-		this.content = content;
+		this.com_content = com_content;
 	}
 
 	public int getCom_num() {
@@ -37,20 +37,20 @@ public class CommentVO {
 		this.id = id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getCom_content() {
+		return com_content;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setCom_content(String com_content) {
+		this.com_content = com_content;
 	}
 
-	public String getRegdate() {
-		return regdate;
+	public String getCom_regdate() {
+		return com_regdate;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setCom_regdate(String Com_regdate) {
+		this.com_regdate = Com_regdate;
 	}
 	
 	

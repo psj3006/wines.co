@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.wines.co.model.ErrorAction;
 import com.wines.co.model.qna.GoQnaPageAction;
 import com.wines.co.model.qna.QnaAction;
+import com.wines.co.model.qna.QnaDeleteAction;
+import com.wines.co.model.qna.QnaDeleteComAction;
+import com.wines.co.model.qna.QnaUpdateAction;
 import com.wines.co.model.qna.QnaViewAction;
+import com.wines.co.model.qna.QnaViewNoIncHitAction;
 import com.wines.co.model.qna.QnaWriteAction;
+import com.wines.co.model.qna.QnaWriteComAction;
 
 @WebServlet("/QController")
 public class QController extends HttpServlet {
@@ -40,8 +45,18 @@ public class QController extends HttpServlet {
 			qnaAction = new QnaWriteAction();
 		} else if (type.equals("qna_view")) {
 			qnaAction = new QnaViewAction();
-		} 
-
+		} else if (type.equals("qna_view_noHit")) {
+			qnaAction = new QnaViewNoIncHitAction();
+		} else if (type.equals("deleteCom")) {
+			qnaAction = new QnaDeleteComAction();
+		} else if (type.equals("writeCom")) {
+			qnaAction = new QnaWriteComAction();
+		} else if (type.equals("update")) {
+			qnaAction = new QnaUpdateAction();
+		} else if (type.equals("delete")) {
+			qnaAction = new QnaDeleteAction();
+		}
+		
 		String path = qnaAction.process(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

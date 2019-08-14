@@ -34,7 +34,7 @@
 <style>
 	table {border-collapse: collapse; width:100%;}
 	thead tr th, td {padding:10px}
-	tr, td, th{ text-align: center; }
+	tr, td, th{ text-align: center; word-break:break-all }
 	a { text-decoration: none; color: black; }
 	a:hover { text-weight: bold; }
 	tr td input {
