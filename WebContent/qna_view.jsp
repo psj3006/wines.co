@@ -145,7 +145,7 @@
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="button" value="수정&삭제" onclick="up_del_qna(this.form)" />
 						<input type="hidden" name="id" value="${qvo.getId() }" />
-						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="location.href='/wines.co/QController?type=goQna&nowPage=${nowPage}'" style="right:50px"/>
+						<input class="login100-form-btn2" type="button" value="돌아가기" onclick="history.go(-1)" style="right:50px"/>
 					</div>
 				</form>
 				<br/><hr/><br/>
@@ -164,7 +164,7 @@
 										</c:forEach> 
 									</td>
 									<td style="width:50%">${c.getCom_content() }</td>
-									<td style="width:18%">${c.getCom_regdate()}</td>
+									<td style="width:16%">${c.getCom_regdate()}</td>
 									<td style="width:10%">
 										<input type="button" value="X" style="margin:0 auto" onclick="delete_comment(this.form)"/>
 										<input type="hidden" name="com_num" value="${c.getCom_num() }" />		<!-- 삭제를 위한 댓글번호 -->

@@ -40,8 +40,16 @@
 				<li><a href="/wines.co/MController?type=goMain" class="nav-link text-left">Home</a></li>
                 <li><a href="product_page.jsp" class="nav-link text-left">Shop</a></li>
                 <li><a href="/wines.co/QController?type=goQna" class="nav-link text-left">Q & A</a></li>
-                <li class="active"><a href="mypage.jsp" class="nav-link text-left">My page</a></li>
-                <li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
+                <c:choose>
+					<c:when test="${mvo.getId() eq 'admin'}">
+						<li class="active"><a href="management.jsp" class="nav-link text-left">Management</a></li>
+			        	<li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
+			        </c:when>
+			        <c:otherwise>
+			        	<li class="active"><a href="mypage_chkpw.jsp" class="nav-link text-left">My page</a></li>
+			        	<li><a href="/wines.co/MController?type=logout" class="nav-link text-left">Logout</a></li>
+		        	</c:otherwise>
+		        </c:choose>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
 
@@ -54,7 +62,7 @@
     
     </div>
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" style="margin-top:50px;">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 				<span class="txt1 p-b-11">성함&nbsp;&nbsp; : ${info.getO_name() }</span>
 				<br/>

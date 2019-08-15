@@ -51,7 +51,7 @@
     
     </div>
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" style="margin-top:50px;">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55" style="padding:55px 50px">
 					<span>[ ${id } ] </span><span class="txt1 p-b-11"> 님의 주문내역</span>
 					<hr/>
@@ -69,7 +69,7 @@
 										<tr>
 											<td>${o }</td>
 											<td>
-												<form class="login100-form validate-form flex-sb flex-w" method="post" action="/wines.co/MController?type=">
+												<form class="login100-form validate-form flex-sb flex-w" method="post" action="product_view_order_detail.jsp">
 													<input type="submit" style="margin:0 auto" value=" "/>
 													<input type="hidden" name="o_num" value="${o }" />
 												</form>
@@ -107,9 +107,8 @@
 											<td>${q.getSubject() }</td>
 											<td>${q.getRegdate() }</td>
 											<td>
-												<form class="login100-form validate-form flex-sb flex-w" method="post" action="/wines.co/MController?type=">
+												<form class="login100-form validate-form flex-sb flex-w" method="post" action="/wines.co/QController?type=qna_view&q_num=${q.getQ_num() }">
 													<input type="submit" style="margin:0 auto" value=" "/>
-													<input type="hidden" name="" value="" />
 												</form>
 											</td>
 										</tr>
